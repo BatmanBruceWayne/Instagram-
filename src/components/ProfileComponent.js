@@ -22,7 +22,7 @@ export default class ProfileComponent extends React.Component{
                 </div>
                 <div className="col-md-6">
                   <div className="row">
-                    <div className="col-md-5 text-center">
+                    <div className="col-md-5 text-center" >
                       <h3>Bruce Wayne</h3>
                     </div>
                     <button className="col-md-5 btn btn-info">Edit Profile</button>
