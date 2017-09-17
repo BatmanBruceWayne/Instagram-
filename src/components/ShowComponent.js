@@ -1,14 +1,14 @@
 import React from 'react';
 
-
 class ShowComponent extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    {this.props.listPost.map(
+      (value , key) => {
         return (
-
           <div>
             <div className="blog-2 section section-gray">
               <div className="container ">
@@ -16,7 +16,6 @@ class ShowComponent extends React.Component {
                   <div className="content-center">
                     <div className="col-md-10 offset-md-1">
                       <div className="row">
-
                         <div className="col-md-2 " />
 
                         <div className="col-md-12">
@@ -25,25 +24,37 @@ class ShowComponent extends React.Component {
                           <div className="card card-blog">
 
 
-                            {/*USER        */}
+                            {/*       USER        */}
 
 
                             <div className="card-image">
                               <h4 className="card-title" align="left">
                                 <a href="#" id="author" style={{"font-size" : "15px"}}>
                                   <img src="../clem-onojeghuo-2.jpg" width="35px" alt="Circle Image" className="img-circle img-no-padding img-responsive" />
-                                  Hung
+                                  hihihi
                                 </a>
-                                <p>DESCRIPTION</p>
+                                <p>{value.description}</p>
                               </h4><br/><br/>
                             </div>
+
+
+
+
+
+                            {     /*UPDATE TIME*/      }
+                            <div>
+                            <p className ="fa fa-clock-o" aria-hidden="true"> Update Time</p>
+                            <h3 className="card-category text-success" id = "dateUpdate">
+                            </h3>
+                            </div>
+
 
 
 
                             {/*IMAGE      */}
                             <div>
                               <a href="#">
-                                <img id="image" src = "../forest-bg.jpg"/>
+                                <img id="image" src = {value.img_url}/>
                               </a>
                             </div>
 
@@ -69,7 +80,8 @@ class ShowComponent extends React.Component {
                               </div>
                               <hr/>
 
-                              {/*COMMENT       */}
+                              {/*       COMMENT       */}
+
 
                               <input className="form-control mr-sm-2 no-border" placeholder="Add comment" type="text" />
                             </div>
@@ -85,7 +97,8 @@ class ShowComponent extends React.Component {
 
           </div>
         );
-
+      }
+    ); }
 
 
   }
