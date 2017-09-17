@@ -31,6 +31,7 @@ class NavbarComponent extends React.Component {
                       <i className="fa fa-search"></i>
                     </button>
                   </form>
+
                 </li>
 
                 <li className="nav-item dropdown">

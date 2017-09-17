@@ -1,13 +1,35 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
+import NavbarComponent from './NavbarComponent'
 
-
+import axios from 'axios';
 class LoginComponent extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      email : "",
+      password : ""
+    }
+
+    this.login.bind(this);
+  }
+
+  login(){
+    axios.post('http://api.trainingcolorme.tk/login-user',
+      this.state)
+      .then((response) => {
+        console.log('respone', response);
+      }).catch(function (error) {
+        console.log(error);
+    });
+  }
+
   render() {
     return (
     <div className="full-screen register">
+      <NavbarComponent/>
       <div className="wrapper">
-        <div className="page-header" >
+        <div className="page-header"  style={{"background-image" : "url('http://d2xbg5ewmrmfml.cloudfront.net/assets/img/sections/bruno-abatti.jpg')", width: '100%', 'z-index' : 0}}>
           <div className="filter"></div>
           <div className="container">
             <div className="row">
@@ -17,10 +39,11 @@ class LoginComponent extends React.Component {
               </div>
               <div className="col-md-4 col-sm-5 col-xs-12">
                 <div className="card card-register">
-                  <h3 className="card-title text-center">Register</h3>
+                  <h3 className="card-title text-center">Login</h3>
                   <div className="social">
                     <button href="#paper-kit" className="btn btn-just-icon btn-facebook"><i className="fa fa-facebook"></i></button>
                     <button href="#paper-kit" className="btn btn-just-icon btn-google"><i className="fa fa-google"></i></button>
+                    <button href="#paper-kit" className="btn btn-just-icon btn-twitter"><i className="fa fa-twitter"></i></button>
 
                   </div>
 
@@ -30,23 +53,22 @@ class LoginComponent extends React.Component {
                     <div className="line r"></div>
                   </div>
                   <form className="register-form">
-                    <input type="text" className="form-control" placeholder="Email"/>
+                    <input type="text" className="form-control" placeholder="Email"
+                      onChange={(e) => this.state.email = e.target.value()}
+                    />
 
-                    <input type="password" className="form-control" placeholder="Password"/>
+                    <input type="password" className="form-control" placeholder="Password"
+                           onChange={(e) => this.state.password = e.target.value()}
+                    />
 
-                    <input type="password" className="form-control" placeholder="Confirm Password"/>
-
-                    <button className="btn btn-block btn-round">Register</button>
+                    <button className="btn btn-block btn-round" onClick={this.login}>Login</button>
                   </form>
-                  <div className="login">
-                    <p>Already have an account? <a href="#0">Log in</a>.</p>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="demo-footer text-center">
-            <h6>&copy; <script>document.write(new Date().getFullYear())</script>, made with <i className="fa fa-heart heart"></i> by Creative Tim</h6>
+            <h6> Made <i className="fa fa-heart heart"></i> by Keetool Gays</h6>
           </div>
         </div>
       </div>
