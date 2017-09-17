@@ -6,7 +6,7 @@ class NavbarComponent extends React.Component {
   render() {
     return (
 
-        <nav className="navbar navbar-toggleable-md bg-success fixed-top navbar-default" color-on-scroll="200">
+        <nav className="navbar navbar-toggleable-md bg-success  fixed-top navbar-default" color-on-scroll="200">
           <div className="container">
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-bar"></span>
