@@ -8,6 +8,7 @@ class ShowComponent extends React.Component {
 
   render() {
         return (
+
           <div>
             <div className="blog-2 section section-gray">
               <div className="container ">
