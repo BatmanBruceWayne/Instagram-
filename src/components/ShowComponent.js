@@ -16,6 +16,7 @@ class ShowComponent extends React.Component {
                   <div className="content-center">
                     <div className="col-md-10 offset-md-1">
                       <div className="row">
+
                         <div className="col-md-2 " />
 
                         <div className="col-md-12">
