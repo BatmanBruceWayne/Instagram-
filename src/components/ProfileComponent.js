@@ -13,7 +13,7 @@ export default class ProfileComponent extends React.Component{
                style="background-image: url('http://www.hdwallpaperspulse.com/wp-content/uploads/2013/08/10/bridge.jpg');">
             <div className="filter"></div>
           </div>
-          <div className="profile-content section">
+          <div className="profile-content section-with-space section-gray">
             <div className="container-fluid">
               <div className="row">
                 <div className="col-md-5 text-center" >
@@ -22,10 +22,10 @@ export default class ProfileComponent extends React.Component{
                 </div>
                 <div className="col-md-6">
                   <div className="row">
-                    <div className="col-md-5 text-center" >
+                    <div className="col-md-5 text-center">
                       <h3>Bruce Wayne</h3>
                     </div>
-                    <button className="col-md-5 btn btn-info">Edit Profile</button>
+                    <button className="col-md-5 btn btn-danger">Edit Profile</button>
                   </div>
                   <div className="row">
                     <div className="col-md-4"><p>4 posts</p></div>
@@ -39,7 +39,15 @@ export default class ProfileComponent extends React.Component{
             </div>
           </div>
 
-          <div className="section latest-offers">
+          <div className="col-md-12 text-center" style="margin: 20px;">
+            <button type="button" className="btn btn-danger btn-round">Danger</button>
+            <button className="btn btn-just-icon btn-border btn-youtube">
+              <i className="fa fa-instagram" aria-hidden="true"></i>
+            </button>
+            <button type="button" className="btn btn-danger btn-round">Danger</button>
+          </div>
+
+          <div className="latest-offers section-with-space section-gray">
             <div className="container">
               <div className="row">
                 <div className="col-md-4">
