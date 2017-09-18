@@ -5,6 +5,10 @@ import NavbarComponent from './NavbarComponent';
 export default class PostPhotoComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state={
+      photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5mt4WVTVbXPeH-djj7o93I5cSMTblPBWKIoTaMcGte59c-z1iVA",
+      description:''
+    };
   }
 
   render() {
@@ -26,7 +30,7 @@ export default class PostPhotoComponent extends React.Component {
                       <div className="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div className="fileinput-new thumbnail img-no-padding"
                              style={{"max-width": "370px", "max-height": "250px"}}/>
-                        <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/21751560_2032301003681865_6906246693044740832_n.jpg?oh=b1e7ff4da6ebe46fd43fab67a3dc4dd5&oe=5A54E3B7" alt="..."/>
+                        <img src={this.state.photo} alt="..."/>
                       </div>
                       <div className="fileinput-preview fileinput-exists thumbnail img-no-padding"
                            style={{"max-width": "370px", "max-height": "250px"}}></div>
