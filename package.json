@@ -40,10 +40,7 @@
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
     "axios": "^0.16.2"
-<<<<<<< HEAD
 
-=======
->>>>>>> 4084c8ae2ea36ec0837fe958a6849886d307713d
   },
   "devDependencies": {
     "autoprefixer": "7.1.2",

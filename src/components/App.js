@@ -3,9 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-import RegisterComponent from "./RegisterComponent";
+// import RegisterComponent from "./RegisterComponent";
 import LoginComponent from "./LoginComponent";
+import ProfileComponent from './ProfileComponent';
+// import NavbarComponent from "./NavbarComponent";
+import ShowContainer from "../containers/ShowContainer";
 import NavbarComponent from "./NavbarComponent";
+import PostPhotoComponent from "./PostPhotoComponent";
+import ShowComponent from "./ShowComponent";
 
 
 // This is a class-based component because the current
@@ -15,7 +20,7 @@ import NavbarComponent from "./NavbarComponent";
 class App extends React.Component {
   render() {
     return (
-      <RegisterComponent/>
+<ShowContainer />
     );
   }
 }
