@@ -90,10 +90,7 @@ class ShowComponent extends React.Component {
                 <div className="col-md-10 offset-md-1">
                   <div className="row">
                     <NavbarComponent/>
-                    <hr/>
                     <div className="col-md-2 " />
-                    <div className="col-md-2" />
-
                     <div className="col-md-10" >
                       <center><h1 className="title" style={{color: "mediumseagreen", "font-family": "TlwgTypewriter"}}>
                         Instagram</h1></center>
