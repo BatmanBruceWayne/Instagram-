@@ -1,7 +1,7 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
-import NavbarComponent from './NavbarComponent'
-import axios from 'axios'
+import NavbarComponent from './NavbarComponent';
+import axios from 'axios';
 class RegisterComponent extends React.Component {
 
   constructor(){
