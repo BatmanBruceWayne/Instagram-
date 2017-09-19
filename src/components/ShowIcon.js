@@ -1,15 +1,14 @@
 import React from 'react';
 
-class ShowCommentAndIconComponent extends React.Component {
+class ShowIcon extends React.Component {
   constructor(props) {
     super(props);
+    console.log("COMPONENT_ICON", this.props.isAddComment);
   }
 
   render() {
     return (
-
-
-      <div className="card-block">
+      <div>
         <div className="row">
           <div className="col-md-2">
             <button className="btn btn-just-icon btn-border btn-google">
@@ -21,21 +20,15 @@ class ShowCommentAndIconComponent extends React.Component {
           </div>
 
           <div className="col-md-2">
-            <button className="btn btn-just-icon btn-border btn-github">
+            <button className="btn btn-just-icon btn-border btn-github" onClick = {() => {this.props.isAddComment(); }}>
               <i className="fa fa-comment-o" aria-hidden="true"/>
             </button>
             <br/><br/>
           </div>
         </div>
-        <hr/>
-
-        {/*       COMMENT       */}
-
-
-        <input className="form-control mr-sm-2 no-border" placeholder="Add comment" type="text"/>
       </div>
-    );
+    )
   }
 }
 
-export default ShowCommentAndIconComponent;
+export default ShowIcon;

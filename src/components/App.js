@@ -10,7 +10,9 @@ import ProfileComponent from './ProfileComponent';
 import ShowContainer from "../containers/ShowContainer";
 import NavbarComponent from "./NavbarComponent";
 import PostPhotoComponent from "./PostPhotoComponent";
-import ShowComponent from "./ShowComponent";
+import ShowComment from "./ShowComment";
+import ShowHeader from "./ShowHeader";
+import ShowImageAndTime from "./ShowImageAndTime";
 
 
 // This is a class-based component because the current

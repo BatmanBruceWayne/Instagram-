@@ -11,5 +11,6 @@ export default {
            "like": 0,
            "user_name": 0
          }
-  ]
+  ],
+  isAdding : true
   };
