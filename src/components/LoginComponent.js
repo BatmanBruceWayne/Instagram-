@@ -1,12 +1,16 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
+
 import NavbarComponent from './NavbarComponent'
 import * as actions from '../actions/Actions'
+
+
 import axios from 'axios';
 class LoginComponent extends React.Component {
   constructor(){
     super();
     this.state = {
+
       email : "frontend@123",
       password : "12345",
       error : ""
@@ -39,7 +43,7 @@ class LoginComponent extends React.Component {
       <NavbarComponent/>
       <div className="wrapper">
         <div className="page-header"  style={{"background-image" : "url('http://d2xbg5ewmrmfml.cloudfront.net/assets/img/sections/bruno-abatti.jpg')", width: '100%', 'z-index' : 0}}>
-          <div className="filter"></div>
+          <div className ="filter" />
           <div className="container">
             <div className="row">
               <div className="col-md-6 offset-md-1 col-sm-7 col-xs-12">
