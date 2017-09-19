@@ -3,7 +3,9 @@ import ShowComponent from '../components/ShowComponent';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as getDataToShow from '../actions/getDataToShow';
-import NavbarComponent from "../components/NavbarComponent";
+import ShowUserComponent from "../components/ShowUserComponent";
+import ShowImageAndTime from "../components/ShowImageAndTime";
+import ShowCommentAndIcon from "../components/ShowCommentAndIcon";
 
 class ShowContainer extends React.Component {
   constructor(props, context) {
@@ -16,19 +18,24 @@ class ShowContainer extends React.Component {
   }
 
   render() {
+    {console.log("uhuhuhuhuhu" , this.props.listPost);}
     return (
       <div>
+
 
         <ShowComponent
           getData={this.getData}
           listPost={this.props.listPost}
         />
       </div>
-    );
+
+  );
+
   }
 }
 
 function mapStateToProps(state) {
+  {console.log("mapStateToProps" , state.showReducer.listPost);}
   return {
     listPost: state.showReducer.listPost
   };
