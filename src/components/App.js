@@ -6,9 +6,11 @@ import {Route} from 'react-router';
 import ShowContainer from "../containers/ShowContainer";
 import PostPhotoContainer from "../containers/PostPhotoContainer";
 import NavbarComponent from "./NavbarComponent";
+
 import PostPhotoComponent from "./PostPhotoComponent";
 import ShowUserComponent from "./ShowUserComponent";
 import ShowComment from "./ShowComment";
+
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -25,6 +27,7 @@ class App extends React.Component {
           <Route extra path="/" component={ShowContainer}/>
         </Switch>
       </div>
+
     );
   }
 }

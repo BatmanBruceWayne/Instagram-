@@ -1,28 +1,40 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 
-import NavbarComponent from './NavbarComponent';
+import NavbarComponent from './NavbarComponent'
+import * as actions from '../actions/Actions'
+
 
 import axios from 'axios';
 class LoginComponent extends React.Component {
   constructor(){
     super();
     this.state = {
-      email : "",
-      password : ""
-    };
+
+      email : "frontend@123",
+      password : "12345",
+      error : ""
+    }
 
     this.login.bind(this);
   }
 
-  login(){
-    axios.post('http://api.trainingcolorme.tk/login-user',
-      this.state)
+  login(e) {
+    console.log("LoginComponent -> login(data)", this.state);
+    e.preventDefault();
+    axios.post('http://api.trainingcolorme.tk/login-user',this.state)
       .then((response) => {
         console.log('respone', response);
+        if(!response.data.status)
+          this.setState({error: response.data.data.message});
+        else {
+          localStorage.setItem("token", response.data.data.token);
+        }
       }).catch(function (error) {
-        console.log(error);
+      console.log(error);
+
     });
+    console.log("After prevent");
   }
 
   render() {
@@ -55,14 +67,14 @@ class LoginComponent extends React.Component {
                   </div>
                   <form className="register-form">
                     <input type="text" className="form-control" placeholder="Email"
-                      onChange={(e) => this.state.email = e.target.value()}
-                    />
+                           onChange={(e) => this.setState({email : e.target.value})} value={this.state.email}/>
 
                     <input type="password" className="form-control" placeholder="Password"
-                           onChange={(e) => this.state.password = e.target.value()}
-                    />
+                           onChange={(e) => this.setState({password : e.target.value})} value={this.state.password}/>
 
-                    <button className="btn btn-block btn-round" onClick={this.login}>Login</button>
+                    <p style={{color : "red"}}>{this.state.error}</p>
+
+                    <button className="btn btn-block btn-round" onClick={(e) => {this.login(e)}}>Login</button>
                   </form>
                 </div>
               </div>
