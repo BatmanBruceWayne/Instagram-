@@ -12,7 +12,7 @@ class ShowReadMore extends React.Component {
     return (
       <div>
         <center>
-          <button type="button" className="btn btn-outline-success btn-round" onClick={() => {this.props.getData(this.state.value) }}
+          <button type="button" className="btn btn-outline-success btn-round" onClick={() => {this.props.getData(this.state.value);}}
                   style={{width: "400px", value: "Readmore..."}}>Be Continue ...
           </button>
         </center>
