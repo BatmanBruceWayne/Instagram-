@@ -1,15 +1,13 @@
 import React from 'react';
 
-class ShowCommentAndIconComponent extends React.Component {
+class ShowIcon extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-
-
-      <div className="card-block">
+      <div>
         <div className="row">
           <div className="col-md-2">
             <button className="btn btn-just-icon btn-border btn-google">
@@ -28,14 +26,9 @@ class ShowCommentAndIconComponent extends React.Component {
           </div>
         </div>
         <hr/>
-
-        {/*       COMMENT       */}
-
-
-        <input className="form-control mr-sm-2 no-border" placeholder="Add comment" type="text"/>
       </div>
-    );
+    )
   }
 }
 
-export default ShowCommentAndIconComponent;
+export default ShowIcon;

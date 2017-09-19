@@ -18,7 +18,7 @@ class ShowImageAndTime extends React.Component {
             </a>
           </div>
           <br/>
-          <div>
+          <div className="col-md-4 offset-md-8" >
             <h6 className="card-category text-success"><i className="fa fa-clock-o"/>
               Update at : {this.props.updated_at}</h6>
           </div>

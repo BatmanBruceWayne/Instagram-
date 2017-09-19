@@ -1,11 +1,15 @@
 import React from 'react';
-import ShowComponent from '../components/ShowComponent';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as getDataToShow from '../actions/getDataToShow';
 import ShowUserComponent from "../components/ShowUserComponent";
 import ShowImageAndTime from "../components/ShowImageAndTime";
-import ShowCommentAndIcon from "../components/ShowCommentAndIcon";
+import ShowReadMore from "../components/ShowReadMore";
+import NavbarComponent from "../components/NavbarComponent";
+import ShowHeader from "../components/ShowHeader";
+import ShowIcon from "../components/ShowIcon";
+import ShowComment from "../components/ShowComment";
+
 
 class ShowContainer extends React.Component {
   constructor(props, context) {
@@ -18,24 +22,62 @@ class ShowContainer extends React.Component {
   }
 
   render() {
-    {console.log("uhuhuhuhuhu" , this.props.listPost);}
     return (
       <div>
+        <div>
+          <div className="blog-2 section section-gray">
+            <div className="container ">
+              <div className="row">
+                <div className="content-center">
+                  <div className="col-md-10 offset-md-2">
+                    <div className="row">
+                      <NavbarComponent/>
+                      <div className="col-md-10">
+                        <ShowHeader/>
+                        {this.props.listPost.map(
+                          (value) => {
+                            return (
+                              <div className="card card-blog" style={{backgroundColor: "#FFFAF0"}}>
+                                <ShowUserComponent
+                                  user_name={value.user_name}
+                                />
+                                <ShowImageAndTime
+                                  description={value.description}
+                                  img_url={value.img_url}
+                                  updated_at={value.updated_at}
+                                />
+                                < div className="card-block">
+                                <ShowIcon
+                                  like={value.like}
+                                />
+                                  <ShowComment />
+                                </div>
 
-
-        <ShowComponent
-          getData={this.getData}
-          listPost={this.props.listPost}
-        />
+                                <br/><br/>
+                              </div>
+                            );
+                          }
+                        )
+                        }
+                        <center><ShowReadMore
+                          getData={this.getData}
+                        /></center>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-  );
+    );
 
   }
 }
 
 function mapStateToProps(state) {
-  {console.log("mapStateToProps" , state.showReducer.listPost);}
   return {
     listPost: state.showReducer.listPost
   };
