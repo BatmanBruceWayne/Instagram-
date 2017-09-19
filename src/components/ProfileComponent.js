@@ -1,4 +1,5 @@
 import React from 'react';
+import NavbarComponent from "./NavbarComponent";
 
 export default class ProfileComponent extends React.Component{
   constructor(props, context){
@@ -9,8 +10,9 @@ export default class ProfileComponent extends React.Component{
     return(
       <div>
         <div className="wrapper">
+          <NavbarComponent/>
           <div className="page-header page-header-small"
-               style="background-image: url('http://www.hdwallpaperspulse.com/wp-content/uploads/2013/08/10/bridge.jpg');">
+               style={{'background-image': `url('http://www.hdwallpaperspulse.com/wp-content/uploads/2013/08/10/bridge.jpg')`}}>
             <div className="filter"></div>
           </div>
           <div className="profile-content section-with-space section-gray">
@@ -18,7 +20,7 @@ export default class ProfileComponent extends React.Component{
               <div className="row">
                 <div className="col-md-5 text-center" >
                   <img src="https://sites.google.com/site/baticlubfcsa/_/rsrc/1476382112707/home/images.jpg?height=236&width=320"
-                       className="rounded-circle" width="150px" height="150px" style="align:right;"/>
+                       className="rounded-circle" width="150px" height="150px" style={{align:'right'}}/>
                 </div>
                 <div className="col-md-6">
                   <div className="row">
@@ -39,7 +41,7 @@ export default class ProfileComponent extends React.Component{
             </div>
           </div>
 
-          <div className="col-md-12 text-center" style="margin: 20px;">
+          <div className="col-md-12 text-center" style={{margin: '20px'}}>
             <button type="button" className="btn btn-danger btn-round">Danger</button>
             <button className="btn btn-just-icon btn-border btn-youtube">
               <i className="fa fa-instagram" aria-hidden="true"></i>
