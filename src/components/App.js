@@ -1,31 +1,81 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Switch, NavLink} from 'react-router-dom';
 import {Route} from 'react-router';
-import ShowContainer from "../containers/ShowContainer";
-import PostPhotoContainer from "../containers/PostPhotoContainer";
-import NavbarComponent from "./NavbarComponent";
-
-import PostPhotoComponent from "./PostPhotoComponent";
-import ShowUserComponent from "./ShowUserComponent";
-import ShowComment from "./ShowComment";
-import ShowHeader from "./ShowHeader";
-import ShowImageAndTime from "./ShowImageAndTime";
-import GuestProfileComponent from './GuestProfileComponent';
-import RegisterComponent from "./RegisterComponent";
-import LoginComponent from "./LoginComponent";
-
-
-// This is a class-based component because the current
-// version of hot reloading won't hot reload a stateless
-// component at the top-level.
+import {Switch, NavLink} from 'react-router-dom';
+import ShowContainer from '../containers/ShowContainer';
+import ProfileComponent from './ProfileComponent';
 
 class App extends React.Component {
   render() {
     return (
-      <ShowContainer />
+      <div>
+        <div>
+          <nav className="navbar navbar-toggleable-md bg-success fixed-top navbar-default" color-on-scroll="200">
+            <div className="container">
+              <NavLink extra to="/">
+                <button className="btn btn-just-icon btn-instagram">
+                  <i className="fa fa-instagram" aria-hidden="true"></i>
+                </button>
+              </NavLink>
+              <a className="navbar-brand" href="#paper-kit">INSTAGRAM</a>
 
+
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <form className="form-inline">
+                      <input className="form-control mr-sm-2 no-border" type="text" placeholder="Search"/>
+                      <button type="submit" className="btn btn-primary btn-just-icon btn-round ">
+                        <i className="fa fa-search"></i>
+                      </button>
+                    </form>
+                  </li>
+
+
+                  <li className="nav-item dropdown">
+                    <a className="btn btn-primary btn-just-icon btn-round" data-toggle="dropdown" aria-expanded="false">
+                      <i className="fa fa-dribbble" aria-hidden="true"></i>
+                    </a>
+                    <ul className="dropdown-menu dropdown-menu-right dropdown-wide dropdown-notification">
+                      <li className="dropdown-header">
+                        You have 7 unread notifications
+                      </li>
+                      <li>
+                      </li>
+                      <li className="dropdown-footer">
+                        <ul className="dropdown-footer-menu">
+                          <li>
+                            <a href="#paper-kit">Mark all as read</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+
+                  <li className="nav-item dropdown">
+                    <div className="nav-link navbar-brand" width="30" height="30"
+                         aria-expanded="false">
+                      <div className="profile-photo-small">
+                        <NavLink to="/profile">
+                          <img src="http://d2xbg5ewmrmfml.cloudfront.net/assets/img/faces/erik-lucatero-2.jpg"
+                               alt="Circle Image" className="img-circle img-responsive img-no-padding"/>
+                        </NavLink>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </nav>
+        </div>
+        <Switch>
+          <Route exact path="/" component={ShowContainer}/>
+          <Route path="/profile" component={ProfileComponent}/>
+        </Switch>
+      </div>
     );
   }
 }
@@ -35,3 +85,4 @@ App.propTypes = {
 };
 
 export default App;
+
