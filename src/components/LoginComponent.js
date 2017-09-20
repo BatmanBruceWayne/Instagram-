@@ -29,6 +29,7 @@ class LoginComponent extends React.Component {
         else {
           localStorage.setItem("token", response.data.data.token);
         }
+        {console.log("LOGIN_COMP",localStorage.getItem("token"));}
       }).catch(function (error) {
       console.log(error);
 

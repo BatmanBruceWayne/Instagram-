@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export function getDataToShow() {
+export function getDataToShow(value) {
 
   return function (dispatch) {
-    axios.get('http://api.trainingcolorme.tk/' + 'page?token='  + '&page_id=0' )
+    console.log( "ACTION :" , localStorage.getItem("token") , "      VALUE :" , value);
+    axios.get('http://api.trainingcolorme.tk/page?token='+localStorage.getItem("token")+'&page_id='+value )
   .then(function (response) {
         dispatch(loadSuccess(response));
       })

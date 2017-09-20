@@ -14,6 +14,7 @@ import ShowHeader from "./ShowHeader";
 import ShowImageAndTime from "./ShowImageAndTime";
 import GuestProfileComponent from './GuestProfileComponent';
 import RegisterComponent from "./RegisterComponent";
+import LoginComponent from "./LoginComponent";
 
 
 // This is a class-based component because the current
@@ -23,7 +24,7 @@ import RegisterComponent from "./RegisterComponent";
 class App extends React.Component {
   render() {
     return (
-      <LoginComponent />
+      <ShowContainer />
 
     );
   }

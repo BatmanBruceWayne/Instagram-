@@ -22,8 +22,8 @@ class ShowContainer extends React.Component {
 
   }
 
-  getData() {
-    this.props.getDataToShow.getDataToShow();
+  getData(value) {
+    this.props.getDataToShow.getDataToShow(value);
   }
   isAddComment(){
     this.props.actions.isAddComment() ;
