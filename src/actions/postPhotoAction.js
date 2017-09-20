@@ -1,7 +1,7 @@
 import axios from 'axios';
 export function sendPhotoOnAPI(value) {
-  return function (dispatch) {
-    axios.post('http://api.colorme.tk',
+  return function () {
+    axios.post('http://api.trainingcolorme.tk/upload',
       {
         photo:value.photo,
         description: value.description

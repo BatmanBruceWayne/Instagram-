@@ -1,15 +1,14 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import PropTypes from 'prop-types';
-
-
-// import RegisterComponent from "./RegisterComponent";
-import LoginComponent from "./LoginComponent";
-import ProfileComponent from './ProfileComponent';
-// import NavbarComponent from "./NavbarComponent";
+import {Switch, NavLink} from 'react-router-dom';
+import {Route} from 'react-router';
 import ShowContainer from "../containers/ShowContainer";
+import PostPhotoContainer from "../containers/PostPhotoContainer";
 import NavbarComponent from "./NavbarComponent";
+
 import PostPhotoComponent from "./PostPhotoComponent";
+import ShowUserComponent from "./ShowUserComponent";
 import ShowComment from "./ShowComment";
 import ShowHeader from "./ShowHeader";
 import ShowImageAndTime from "./ShowImageAndTime";
@@ -25,6 +24,7 @@ class App extends React.Component {
   render() {
     return (
       <LoginComponent />
+
     );
   }
 }

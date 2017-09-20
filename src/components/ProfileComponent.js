@@ -2,6 +2,7 @@ import React from 'react';
 import NavbarComponent from './NavbarComponent';
 import {NavLink} from 'react-router-dom';
 
+
 export default class ProfileComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -12,17 +13,20 @@ export default class ProfileComponent extends React.Component {
       <div>
         <NavbarComponent/>
         <div className="wrapper">
+          <NavbarComponent/>
           <div className="page-header page-header-small"
                style={{"background-image": "url('http://t.wallpaperweb.org/wallpaper/nature/1920x1080/lakeside_v3_wallpaper_pack_by_mpk_1920x1080.jpg')"}}>
+
             <div className="filter"></div>
           </div>
           <div className="profile-content section-with-space section-gray">
             <div className="container-fluid">
               <div className="row">
-                <div className="col-md-5 text-center">
-                  <img
-                    src="https://sites.google.com/site/baticlubfcsa/_/rsrc/1476382112707/home/images.jpg?height=236&width=320"
-                    className="rounded-circle" width="150px" height="150px" style={{align: "right"}}/>
+
+                <div className="col-md-5 text-center" >
+                  <img src="https://sites.google.com/site/baticlubfcsa/_/rsrc/1476382112707/home/images.jpg?height=236&width=320"
+                       className="rounded-circle" width="150px" height="150px" style={{align:'right'}}/>
+
                 </div>
                 <div className="col-md-6">
                   <div className="row">
@@ -44,6 +48,7 @@ export default class ProfileComponent extends React.Component {
           </div>
 
           <div className="col-md-12 text-center" style={{"margin-top": "30px"}}>
+
             <button type="button" className="btn btn-danger btn-round">Danger</button>
             <NavLink to="/postphoto">
               <button className="btn btn-just-icon btn-border btn-youtube">
