@@ -12,7 +12,14 @@ console.log("REDUCER" , state);
       return{
         ...state,isAdding : !state.isAdding
       };
-
+    case 'LOAD_PAGE_ID' :
+      return{
+        ...state,page_id: state.page_id + 1
+      };
+    case 'GET_TOKEN':
+      return{
+        ...state, token : action.token
+      };
     default:
       return state ;
   }

@@ -13,6 +13,8 @@ import PostPhotoComponent from "./PostPhotoComponent";
 import ShowComment from "./ShowComment";
 import ShowHeader from "./ShowHeader";
 import ShowImageAndTime from "./ShowImageAndTime";
+import GuestProfileComponent from './GuestProfileComponent';
+import RegisterComponent from "./RegisterComponent";
 
 
 // This is a class-based component because the current
@@ -22,7 +24,7 @@ import ShowImageAndTime from "./ShowImageAndTime";
 class App extends React.Component {
   render() {
     return (
-<ShowContainer />
+      <LoginComponent />
     );
   }
 }

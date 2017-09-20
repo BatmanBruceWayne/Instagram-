@@ -2,14 +2,17 @@
 import React from 'react';
 
 import NavbarComponent from './NavbarComponent';
+import * as getDataToShow from '../actions/getDataToShow';
+import {bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
 
 import axios from 'axios';
 class LoginComponent extends React.Component {
   constructor(){
     super();
     this.state = {
-      email : "",
-      password : ""
+      email : "frontend@123",
+      password : "12345",
     };
 
     this.login.bind(this);
@@ -19,10 +22,9 @@ class LoginComponent extends React.Component {
     axios.post('http://api.trainingcolorme.tk/login-user',
       this.state)
       .then((response) => {
-        console.log('respone', response);
-      }).catch(function (error) {
-        console.log(error);
-    });
+        this.props.getDataToShow.getToken(response.data.data);       })
+      .catch(function (error) {
+      });
   }
 
   render() {
@@ -53,7 +55,7 @@ class LoginComponent extends React.Component {
                     <span>or</span>
                     <div className="line r"></div>
                   </div>
-                  <form className="register-form">
+                  <form className="register-form" >
                     <input type="text" className="form-control" placeholder="Email"
                       onChange={(e) => this.state.email = e.target.value()}
                     />
@@ -62,7 +64,8 @@ class LoginComponent extends React.Component {
                            onChange={(e) => this.state.password = e.target.value()}
                     />
 
-                    <button className="btn btn-block btn-round" onClick={this.login}>Login</button>
+                    <button className="btn btn-block btn-round" onClick={(e) => {e.preventDefault();this.login();
+                    }}>Login</button>
                   </form>
                 </div>
               </div>
@@ -78,5 +81,10 @@ class LoginComponent extends React.Component {
   );
   }
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    getDataToShow: bindActionCreators(getDataToShow, dispatch),
+  };
+}
 
-export default LoginComponent;
+export default connect(mapDispatchToProps)(LoginComponent);

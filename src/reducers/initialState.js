@@ -12,5 +12,7 @@ export default {
            "user_name": 0
          }
   ],
-  isAdding : true
+  isAdding : true,
+  page_id: 0,
+  token : ""
   };
