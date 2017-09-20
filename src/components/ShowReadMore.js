@@ -4,7 +4,7 @@ class ShowReadMore extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value : -1
+      value : 0
     };
   }
 
@@ -12,7 +12,7 @@ class ShowReadMore extends React.Component {
     return (
       <div>
         <center>
-          <button type="button" className="btn btn-outline-success btn-round" onClick={() => {this.props.getData(this.state.value);}}
+          <button type="button" className="btn btn-outline-success btn-round" onClick={() => {this.setState({value : this.state.value + 1}); this.props.getData(this.state.value);}}
                   style={{width: "400px", value: "Readmore..."}}>Be Continue ...
           </button>
         </center>

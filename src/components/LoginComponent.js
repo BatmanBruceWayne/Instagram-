@@ -1,9 +1,8 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 
-import NavbarComponent from './NavbarComponent'
-import * as actions from '../actions/Actions'
 
+import NavbarComponent from './NavbarComponent';
 
 import axios from 'axios';
 class LoginComponent extends React.Component {
@@ -14,7 +13,7 @@ class LoginComponent extends React.Component {
       email : "frontend@123",
       password : "12345",
       error : ""
-    }
+    };
 
     this.login.bind(this);
   }
@@ -30,6 +29,7 @@ class LoginComponent extends React.Component {
         else {
           localStorage.setItem("token", response.data.data.token);
         }
+        {console.log("LOGIN_COMP",localStorage.getItem("token"));}
       }).catch(function (error) {
       console.log(error);
 
@@ -65,7 +65,7 @@ class LoginComponent extends React.Component {
                     <span>or</span>
                     <div className="line r"></div>
                   </div>
-                  <form className="register-form">
+                  <form className="register-form" >
                     <input type="text" className="form-control" placeholder="Email"
                            onChange={(e) => this.setState({email : e.target.value})} value={this.state.email}/>
 
@@ -74,7 +74,8 @@ class LoginComponent extends React.Component {
 
                     <p style={{color : "red"}}>{this.state.error}</p>
 
-                    <button className="btn btn-block btn-round" onClick={(e) => {this.login(e)}}>Login</button>
+
+                    <button className="btn btn-block btn-round" onClick={(e) => {this.login(e);}}>Login</button>
                   </form>
                 </div>
               </div>
@@ -91,4 +92,5 @@ class LoginComponent extends React.Component {
   }
 }
 
-export default LoginComponent;
+
+export default LoginComponent ;

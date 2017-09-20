@@ -10,6 +10,11 @@ import NavbarComponent from "./NavbarComponent";
 import PostPhotoComponent from "./PostPhotoComponent";
 import ShowUserComponent from "./ShowUserComponent";
 import ShowComment from "./ShowComment";
+import ShowHeader from "./ShowHeader";
+import ShowImageAndTime from "./ShowImageAndTime";
+import GuestProfileComponent from './GuestProfileComponent';
+import RegisterComponent from "./RegisterComponent";
+import LoginComponent from "./LoginComponent";
 
 
 // This is a class-based component because the current
@@ -19,14 +24,7 @@ import ShowComment from "./ShowComment";
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <div>
-          <NavbarComponent/>
-        </div>
-        <Switch>
-          <Route extra path="/" component={ShowContainer}/>
-        </Switch>
-      </div>
+      <ShowContainer />
 
     );
   }

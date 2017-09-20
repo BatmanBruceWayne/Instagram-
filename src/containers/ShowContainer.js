@@ -16,16 +16,20 @@ class ShowContainer extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.getData = this.getData.bind(this);
-    this.isAddComment = this.isAddComment.bind(this);
+    this.isAddComment = this.isAddComment.bind(this)
+    this.loadPageId = this.loadPageId.bind(this);
     console.log("CONTAINER_PROPS", this.props.actions.isAddComment);
 
   }
 
-  getData() {
-    this.props.getDataToShow.getDataToShow();
+  getData(value) {
+    this.props.getDataToShow.getDataToShow(value);
   }
   isAddComment(){
     this.props.actions.isAddComment() ;
+  }
+  loadPageId(){
+    this.props.getDataToShow.loadPageId();
   }
 
   render() {
@@ -71,6 +75,7 @@ class ShowContainer extends React.Component {
                         }
                         <center><ShowReadMore
                           getData={this.getData}
+                          loadPageId= {this.loadPageId}
                         /></center>
                       </div>
                     </div>
