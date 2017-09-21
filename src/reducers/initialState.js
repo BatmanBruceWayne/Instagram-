@@ -15,7 +15,10 @@ export default {
   isAdding: true,
   page_id: 0,
   token: "",
-
+  loginState : {
+    state : 0,
+    error : "This is error you son of bitches."
+  },
 user: {
   myPhoto: [
     {

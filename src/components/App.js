@@ -7,11 +7,12 @@ import ShowContainer from '../containers/ShowContainer';
 import ProfileContainer from "../containers/ProfileContainer";
 import PostPhotoContainer from "../containers/PostPhotoContainer";
 import LoginComponent from "./LoginComponent";
+import LoginContainer from "../containers/LoginContainer";
 
 class App extends React.Component {
   render() {
     return (
-      <LoginComponent/>
+      <LoginContainer/>
     );
   }
 }
