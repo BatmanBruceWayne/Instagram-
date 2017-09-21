@@ -1,18 +1,17 @@
 import React from 'react';
-import NavbarComponent from './NavbarComponent';
-
+import axios from 'axios';
 
 export default class PostPhotoComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      file: '',
-      photo: 'http://images.tapchianhdep.net/15-10top-12-hinh-anh-girl-xinh-de-thuong-nhat-viet-nam11.jpg',
+      photo_file:'',
+      photo_url: 'http://images.tapchianhdep.net/15-10top-12-hinh-anh-girl-xinh-de-thuong-nhat-viet-nam11.jpg',
       description: ''
     };
-    this.sendPhotoOnAPINoLoad = this.sendPhotoOnAPINoLoad.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.sendPhotoOnAPINoLoad = this.sendPhotoOnAPINoLoad.bind(this);
   }
 
 
@@ -26,21 +25,34 @@ export default class PostPhotoComponent extends React.Component {
     let file = e.target.files[0];
     reader.onloadend = () => {
       this.setState({
-        photo: reader.result
+        photo_file: file,
+        photo_url: reader.result
       });
     };
     reader.readAsDataURL(file);
   }
 
-  sendPhotoOnAPINoLoad(e) {
+  sendPhotoOnAPINoLoad(e){
     e.preventDefault();
-    this.props.sendPhotoOnAPI(this.state);
+    let token = localStorage.getItem("token");
+    let api = 'http://api.trainingcolorme.tk/upload' + '?token=' + token;
+    console.log("batman");
+    axios.post(api,
+      {
+        photo: this.state.photo_file,
+        description: this.state.description
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
     return (
       <div>
-        <NavbarComponent/>
         <div className="wrapper">
           <div className="page-header page-header-small"
                style={{"background-image": "url('http://www.wallpapers13.com/wp-content/uploads/2016/02/Natural-Spring-lake-mountain-snow-island-beautiful-background-915x515.jpg')"}}>
@@ -50,12 +62,12 @@ export default class PostPhotoComponent extends React.Component {
             <div className="section section-nude">
               <div className="container">
                 <h3>Share your photos with everybody on earth</h3>
-                <form onSubmit={this.handleSubmit}>
+                <form>
 
                   <h6>Your image</h6>
                   <div className="fileinput  text-center">
                     <div className=" thumbnail img-no-padding">
-                      <img src={this.state.photo} alt="..."/>
+                      <img src={this.state.photo_url} alt="..."/>
                     </div>
                     <div>
                           <span className="btn btn-outline-default btn-round btn-file">
