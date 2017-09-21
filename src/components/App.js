@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import {Route} from 'react-router';
 import {Switch, NavLink} from 'react-router-dom';
 import ShowContainer from '../containers/ShowContainer';
-import ProfileComponent from './ProfileComponent';
+import ProfileContainer from "../containers/ProfileContainer";
+import PostPhotoContainer from "../containers/PostPhotoContainer";
+import LoginComponent from "./LoginComponent";
 
 class App extends React.Component {
   render() {
@@ -73,7 +75,7 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route exact path="/" component={ShowContainer}/>
-          <Route path="/profile" component={ProfileComponent}/>
+          <Route path="/profile" component={ProfileContainer}/>
         </Switch>
       </div>
     );
