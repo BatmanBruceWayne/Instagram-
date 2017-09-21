@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-export function getDataToShow() {
+export function getDataToShow(value) {
+
   return function (dispatch) {
-    axios.get('http://api.trainingcolorme.tk/' + 'page?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI4LCJpc3MiOiJodHRwOi8vYXBpLnRyYWluaW5nY29sb3JtZS50ay9sb2dpbi11c2VyIiwiaWF0IjoxNTA1ODE0MzA3LCJleHAiOjE1MDU4MTc5MDcsIm5iZiI6MTUwNTgxNDMwNywianRpIjoiaVY2bkJsZlNGNzJJa1BESyJ9.5vfbQgIRT_8C6rhD3H7Z1KRWpylDM3Ct6t4-1-HcJW8' + '&page_id=0' )
+    console.log( "ACTION :" , localStorage.getItem("token") , "      VALUE :" , value);
+    axios.get('http://api.trainingcolorme.tk/page?token='+localStorage.getItem("token")+'&page_id='+value )
   .then(function (response) {
         dispatch(loadSuccess(response));
       })
@@ -18,4 +20,15 @@ export function loadSuccess(response) {
     listPost: response.data.data.img_posts,
   });
 }
-
+export function loadPageId(token) {
+  return({
+    type: "LOAD_PAGE_ID",
+    token : token
+  });
+}
+export function getToken(token) {
+  console.log(" ACTION" , token);
+  return({
+    type : "GET_TOKEN",
+  });
+}

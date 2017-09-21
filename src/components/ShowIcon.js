@@ -11,7 +11,7 @@ class ShowIcon extends React.Component {
       <div>
         <div className="row">
           <div className="col-md-2">
-            <button className="btn btn-just-icon btn-border btn-google">
+            <button type="text" className="btn btn-just-icon btn-border btn-google">
               <i className="fa fa-heart-o" aria-hidden="true"/>
             </button>
             <span className="card-title">
@@ -27,7 +27,7 @@ class ShowIcon extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
