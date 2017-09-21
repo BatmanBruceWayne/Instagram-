@@ -28,6 +28,7 @@ class LoginComponent extends React.Component {
           this.setState({error: response.data.data.message});
         else {
           localStorage.setItem("token", response.data.data.token);
+          localStorage.setItem("user_id", response.data.data.userid);
         }
         {console.log("LOGIN_COMP",localStorage.getItem("token"));}
       }).catch(function (error) {
