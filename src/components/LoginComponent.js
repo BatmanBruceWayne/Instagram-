@@ -3,17 +3,19 @@ import React from 'react';
 
 import NavbarComponent from './NavbarComponent'
 import * as actions from '../actions/Actions'
-
+import {Router,Redirect} from 'react-router'
 
 import axios from 'axios';
+import initialState from '../reducers/initialState';
 class LoginComponent extends React.Component {
   constructor(){
     super();
     this.state = {
 
-      email : "frontend@123",
+      email : "frontend@12",
       password : "12345",
-      error : ""
+      error : "",
+      status : "/login"
     }
 
     this.login.bind(this);
@@ -29,15 +31,20 @@ class LoginComponent extends React.Component {
           this.setState({error: response.data.data.message});
         else {
           localStorage.setItem("token", response.data.data.token);
+          this.state.status = "/profile";
+          this.forceUpdate();
         }
-      }).catch(function (error) {
+        this.props.login(response.data);
+      })
+      .catch(function (error) {
       console.log(error);
 
     });
-    console.log("After prevent");
   }
 
   render() {
+
+    console.log("abc",this.state);
     return (
     <div className="full-screen register">
       <NavbarComponent/>
@@ -73,8 +80,9 @@ class LoginComponent extends React.Component {
                            onChange={(e) => this.setState({password : e.target.value})} value={this.state.password}/>
 
                     <p style={{color : "red"}}>{this.state.error}</p>
-
-                    <button className="btn btn-block btn-round" onClick={(e) => {this.login(e)}}>Login</button>
+                    <Redirect to={this.state.status}/>
+                    <p style={{color : "red"}}>{initialState.loginState.error}</p>
+                    <button className="btn btn-block btn-round" onClick={(e) => {this.login(e)}}>Login </button>
                   </form>
                 </div>
               </div>
@@ -85,7 +93,6 @@ class LoginComponent extends React.Component {
           </div>
         </div>
       </div>
-
     </div>
   );
   }

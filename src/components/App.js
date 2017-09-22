@@ -8,11 +8,20 @@ import ProfileContainer from "../containers/ProfileContainer";
 import PostPhotoContainer from "../containers/PostPhotoContainer";
 import LoginComponent from "./LoginComponent";
 import LoginContainer from "../containers/LoginContainer";
+import initialState from '../reducers/initialState';
+import RegisterComponent from "./RegisterComponent";
 
 class App extends React.Component {
   render() {
     return (
-      <LoginContainer/>
+      <div>
+        <Switch>
+          <Route exact path="/" component={LoginContainer}/>
+          <Route path="/register" component={RegisterComponent}/>
+          <Route path="/login" component={LoginContainer}/>
+          <Route path="/profile" component={ShowContainer}/>
+        </Switch>
+      </div>
     );
   }
 }
@@ -22,4 +31,5 @@ App.propTypes = {
 };
 
 export default App;
+
 
