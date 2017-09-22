@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import {Route, IndexRoute, Router, browserHistory} from 'react-router';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import ShowContainer from "./containers/ShowContainer";
@@ -13,7 +13,6 @@ ReactDOM.render(
     <Route path="/login" component={LoginContainer}/>
     <Route path="/profile" component={ShowContainer}/>
   </Route>,
-  document.getElementById('app')
+  document.getElementById('app'));
 
-);
-registerServiceWorker();
+
