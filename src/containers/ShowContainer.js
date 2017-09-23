@@ -9,26 +9,30 @@ import ShowReadMore from "../components/ShowReadMore";
 import ShowHeader from "../components/ShowHeader";
 import ShowIcon from "../components/ShowIcon";
 import ShowComment from "../components/ShowComment";
+import App from "../components/App";
 
 
 class ShowContainer extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.getData = this.getData.bind(this);
+    this.getPost = this.getPost.bind(this);
     this.isAddComment = this.isAddComment.bind(this)
     this.loadPageId = this.loadPageId.bind(this);
     console.log("CONTAINER_PROPS", this.props.actions.isAddComment);
 
   }
 
-  getData(value) {
-    this.props.getDataToShow.getDataToShow(value);
+  getPost(value) {
+    this.props.getDataToShow.getPostToShow(value);
   }
   isAddComment(){
     this.props.actions.isAddComment() ;
   }
   loadPageId(){
     this.props.getDataToShow.loadPageId();
+  }
+  getComment(){
+    this.props.getDataToShow.getCommentToShow();
   }
 
   render() {
@@ -59,9 +63,12 @@ class ShowContainer extends React.Component {
                                 <ShowIcon
                                   like={value.like}
                                   isAddComment = {this.isAddComment}
+                                  getComment = {this.getComment}
                                 />
                                   <ShowComment
                                   isAdding = {this.props.isAdding}
+                                  listComment = {this.props.listComment}
+                                  id = {value.id}
                                   />
                                 </div>
 
@@ -72,7 +79,7 @@ class ShowContainer extends React.Component {
                         )
                         }
                         <center><ShowReadMore
-                          getData={this.getData}
+                          getPost={this.getPost}
                           loadPageId= {this.loadPageId}
                         /></center>
                       </div>
@@ -94,13 +101,14 @@ function mapStateToProps(state) {
   console.log("STATE_IN_CONTAINER ",state.showReducer);
   return {
     listPost: state.showReducer.listPost,
-    isAdding : state.showReducer.isAdding
+    isAdding : state.showReducer.isAdding,
+    listComment : state.showReducer.listComment
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getDataToShow: bindActionCreators(getDataToShow, dispatch),
+    getDataToShow: bindActionCreators(getDataToShow , dispatch),
     actions : bindActionCreators(Actions, dispatch)
   };
 }
