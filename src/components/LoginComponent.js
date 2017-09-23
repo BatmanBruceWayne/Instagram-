@@ -1,9 +1,8 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 
-import NavbarComponent from './NavbarComponent'
-import * as actions from '../actions/Actions'
-import {Router,Redirect} from 'react-router'
+import NavbarComponent from './NavbarComponent';
+import {Router,Redirect} from 'react-router';
 
 import axios from 'axios';
 import initialState from '../reducers/initialState';
@@ -16,7 +15,7 @@ class LoginComponent extends React.Component {
       password : "12345",
       error : "",
       status : "/login"
-    }
+    };
 
     this.login.bind(this);
   }
@@ -31,6 +30,7 @@ class LoginComponent extends React.Component {
           this.setState({error: response.data.data.message});
         else {
           localStorage.setItem("token", response.data.data.token);
+          localStorage.setItem("user_id", response.data.data.userid);
           this.state.status = "/profile";
           this.forceUpdate();
         }
