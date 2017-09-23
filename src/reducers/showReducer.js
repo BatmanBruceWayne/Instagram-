@@ -1,7 +1,7 @@
 import initialState from './initialState';
 
 export default function showReducer(state = initialState, action) {
-console.log("REDUCER" , state);
+
   switch(action.type){
 
     case 'LOAD_SUCCESS' :

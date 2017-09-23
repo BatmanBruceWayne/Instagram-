@@ -1,10 +1,10 @@
-/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Route} from 'react-router';
 import {Switch, NavLink} from 'react-router-dom';
 import ShowContainer from '../containers/ShowContainer';
-import ProfileComponent from './ProfileComponent';
+import ProfileContainer from "../containers/ProfileContainer";
+import PostPhotoComponent from "./PostPhotoComponent";
 
 class App extends React.Component {
   render() {
@@ -26,12 +26,13 @@ class App extends React.Component {
                   <li className="nav-item">
                     <form className="form-inline">
                       <input className="form-control mr-sm-2 no-border" type="text" placeholder="Search"/>
+                      <NavLink to="post_photo">
                       <button type="submit" className="btn btn-primary btn-just-icon btn-round ">
                         <i className="fa fa-search"></i>
                       </button>
+                      </NavLink>
                     </form>
                   </li>
-
 
                   <li className="nav-item dropdown">
                     <a className="btn btn-primary btn-just-icon btn-round" data-toggle="dropdown" aria-expanded="false">
@@ -53,7 +54,6 @@ class App extends React.Component {
                     </ul>
                   </li>
 
-
                   <li className="nav-item dropdown">
                     <div className="nav-link navbar-brand" width="30" height="30"
                          aria-expanded="false">
@@ -74,8 +74,10 @@ class App extends React.Component {
 
         <Switch>
           <Route exact path="/" component={ShowContainer}/>
-          <Route path="/profile" component={ProfileComponent}/>
+          <Route path="/profile" component={ProfileContainer}/>
+          <Route path="/post_photo" component={PostPhotoComponent}/>
         </Switch>
+
       </div>
     );
   }
@@ -86,4 +88,5 @@ App.propTypes = {
 };
 
 export default App;
+
 
