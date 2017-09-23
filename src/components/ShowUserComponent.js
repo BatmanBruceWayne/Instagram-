@@ -1,5 +1,4 @@
 import React from 'react';
-import ProfileComponent from "./GuestProfileComponent";
 import {NavLink} from 'react-router-dom';
 
 class ShowUserComponent extends React.Component {

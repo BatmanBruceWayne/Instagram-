@@ -9,7 +9,7 @@ class ShowComment extends React.Component {
   }
 
   render() {
-    console.log("COMPONENT_COMMENT", this.props.isAdding, "hihihihhhihihhi", this.props.listComment, "hahaahhahhah", this.props.id + 1);
+    console.log("COMPONENT_COMMENT", this.props.isAdding, "LIST_COMMENT IN COMPONENT", this.props.listComment, "ID(POST) IN COMPONENT", this.props.id);
     if (this.props.isAdding) {
       return (
         <div>
@@ -27,6 +27,9 @@ class ShowComment extends React.Component {
               );
             })}
           <PostComment
+            id = {this.props.id}
+            postComment = {this.props.postComment}
+            getComment = {this.props.getComment}
           />
         </div>
       );

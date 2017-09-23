@@ -4,7 +4,7 @@ export default function showReducer(state = initialState, action) {
 
   switch(action.type){
 
-    case 'LOAD_SUCCESS' :
+    case 'LOAD_POST' :
       return {
         ...state,listPost : [... state.listPost , ... action.listPost ],
   };
@@ -16,9 +16,9 @@ export default function showReducer(state = initialState, action) {
       return{
         ...state,page_id: state.page_id + 1
       };
-    case 'GET_COMMENT':
+    case 'LOAD_COMMENT':
       return{
-        ...state,listComment : [... state.listComment , ... action.listComment ],
+        ...state,listComment : [... action.listComment ],
       };
     default:
       return state ;

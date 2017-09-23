@@ -3,6 +3,7 @@ import React from 'react';
 class PostComment extends React.Component{
   constructor (props) {
     super(props);
+    this.state = {content : ''};
   }
   render(){
     return(
@@ -14,9 +15,9 @@ class PostComment extends React.Component{
             </div>
           </a>
           <div className="media-body">
-            <textarea className="form-control" placeholder="Write a comment..." rows="2" />
+            <textarea className="form-control" placeholder="Write a comment..." rows="2" onChange={() => {this.setState({content:e.target.valeue}); }}/>
             <div className="media-footer">
-              <a href="#paper-kit" className="btn btn-info pull-right">Reply</a>
+              <button className="btn btn-info pull-right" onClick={() => { this.props.postComment(this.props.id, this.state) ;this.props.getComment(); this.props.getComment();  }}>Reply</button>
             </div>
           </div>
         </div>

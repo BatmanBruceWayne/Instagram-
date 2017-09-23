@@ -5,6 +5,7 @@ import {Switch, NavLink} from 'react-router-dom';
 import ShowContainer from '../containers/ShowContainer';
 import ProfileContainer from "../containers/ProfileContainer";
 import PostPhotoComponent from "./PostPhotoComponent";
+import LoginComponent from "./LoginComponent";
 
 class App extends React.Component {
   render() {
@@ -73,8 +74,10 @@ class App extends React.Component {
         </div>
 
         <Switch>
-          <Route exact path="/" component={ShowContainer}/>
+          <Route exact path="/" component={LoginComponent}/>
           <Route path="/profile" component={ProfileContainer}/>
+          <Route path="/login" component={LoginComponent}/>
+          <Route path="/newsfeed" component={ShowContainer}/>
           <Route path="/post_photo" component={PostPhotoComponent}/>
         </Switch>
 
