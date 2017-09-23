@@ -15,7 +15,7 @@ class PostComment extends React.Component{
             </div>
           </a>
           <div className="media-body">
-            <textarea className="form-control" placeholder="Write a comment..." rows="2" onChange={() => {this.setState({content:e.target.value}); }}/>
+            <textarea className="form-control" placeholder="Write a comment..." rows="2" onChange={(e) => {this.setState({content:e.target.value}); }}/>
             <div className="media-footer">
               <button className="btn btn-info pull-right" onClick={() => { this.props.postComment(this.props.id, this.state) ;this.props.getComment(); this.props.getComment();  }}>Reply</button>
             </div>
