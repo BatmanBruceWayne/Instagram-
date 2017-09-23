@@ -83,7 +83,7 @@ class App extends React.Component {
           <Route path="/profile" component={ProfileContainer}/>
           <Route path="/profile-setting" component={ProfileSettingComponent}/>
           <Route path="/newsfeed" component={ShowContainer}/>
-          <Route path="/post-photo" component={PostPhotoComponent}/>
+          <Route path="/post_photo" component={PostPhotoComponent}/>
         </Switch>
 
       </div>
