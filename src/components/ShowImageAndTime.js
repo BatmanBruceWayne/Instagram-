@@ -1,4 +1,5 @@
 import React from 'react';
+import ProfileComponent from "./GuestProfileComponent";
 
 class ShowImageAndTime extends React.Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class ShowImageAndTime extends React.Component {
           {/*UPDATE TIME*/}
           {/*IMAGE      */}
           <div>
-            <a href={this.props.img_url}>
-              <img id="image" src={this.props.img_url}/>
+            <a href={this.props.img_url} >
+              <img id="image" src={this.props.img_url} />
             </a>
           </div>
           <br/>

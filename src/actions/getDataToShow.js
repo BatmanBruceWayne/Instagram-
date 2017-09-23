@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getDataToShow(value) {
+export function getPostToShow(value) {
 
   return function (dispatch) {
     console.log( "ACTION :" , localStorage.getItem("token") , "      VALUE :" , value);
@@ -11,7 +11,17 @@ export function getDataToShow(value) {
       .catch(function (error) {
         throw (error);
       });
-
+  };
+}
+export function getCommentToShow() {
+  return function (dispatch) {
+    axios.get('http://api.trainingcolorme.tk/imgC-data?token='+localStorage.getItem("token") )
+      .then(function (response) {
+        dispatch(loadComment(response));
+      })
+      .catch(function (error) {
+        throw (error);
+      });
   };
 }
 export function loadSuccess(response) {
@@ -26,9 +36,9 @@ export function loadPageId(token) {
     token : token
   });
 }
-export function getToken(token) {
-  console.log(" ACTION" , token);
+export function loadComment(response) {
   return({
-    type : "GET_TOKEN",
+    type : "LOAD_COMMENT",
+    listComment : response.data.data.img_comments
   });
 }

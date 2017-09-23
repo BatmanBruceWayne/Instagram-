@@ -16,9 +16,9 @@ console.log("REDUCER" , state);
       return{
         ...state,page_id: state.page_id + 1
       };
-    case 'GET_TOKEN':
+    case 'GET_COMMENT':
       return{
-        ...state, token : action.token
+        ...state,listComment : [... state.listComment , ... action.listComment ],
       };
     default:
       return state ;

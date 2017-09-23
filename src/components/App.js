@@ -71,6 +71,7 @@ class App extends React.Component {
             </div>
           </nav>
         </div>
+
         <Switch>
           <Route exact path="/" component={ShowContainer}/>
           <Route path="/profile" component={ProfileComponent}/>
