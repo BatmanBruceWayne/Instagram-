@@ -19,10 +19,13 @@ class ShowIcon extends React.Component {
                                 </span>
           </div>
 
-          <div className="col-md-2">
-            <button className="btn btn-just-icon btn-border btn-github" onClick = {() => {this.props.isAddComment(); }}>
+          <div className="col-md-4">
+            <button className="btn btn-just-icon btn-border btn-github" onClick = {() => {this.props.isAddComment(); this.props.getComment(); }}>
               <i className="fa fa-comment-o" aria-hidden="true"/>
             </button>
+            <span className="card-title">
+                                    <a href="#pablo" id="comment"> {this.props.comment} comments  </a>
+                                </span>
             <br/><br/>
           </div>
         </div>

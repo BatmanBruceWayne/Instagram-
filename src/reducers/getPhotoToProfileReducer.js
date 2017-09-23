@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import initialState from './initialState';
 
 export default function getPhotoToProfileReducer(state = initialState.user, action) {
@@ -19,4 +20,3 @@ export default function getPhotoToProfileReducer(state = initialState.user, acti
       return state;
   }
 }
-
