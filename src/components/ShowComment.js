@@ -9,7 +9,7 @@ class ShowComment extends React.Component {
   }
 
   render() {
-    console.log("COMPONENT_COMMENT", this.props.isAdding, "hihihihhhihihhi", this.props.listComment, "hahaahhahhah", this.props.id + 1);
+    //console.log("COMPONENT_COMMENT", this.props.isAdding, "hihihihhhihihhi", this.props.listComment, "hahaahhahhah", this.props.id + 1);
     if (this.props.isAdding) {
       return (
         <div>
