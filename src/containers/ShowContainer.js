@@ -48,15 +48,37 @@ class ShowContainer extends React.Component {
   render() {
     return (
       <div>
+        <br/>
+        <br/>
+        <br/>
+        <div className="page-header" data-parallax="true" style={{"background-image": "url(../Girl.jpg)" , transform: "translate3d(2px, 3px, 04x);"}}>
+          <div className="filter"></div>
+          <div className="content-center">
+            <div className="container">
+              <div className="motto">
+                <ShowHeader/>
+                <ShowReadMore
+                  getPost={this.getPost}
+                  loadPageId= {this.loadPageId}
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
         <div>
           <div className="blog-2 section section-gray">
             <div className="container ">
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
               <div className="row">
                 <div className="content-center">
-                  <div className="col-md-8 offset-md-3">
+                  <div className="col-md-10 offset-md-2">
                     <div className="row">
                       <div className="col-md-10">
-                        <ShowHeader/>
                         {this.props.listPost.map(
                           (value) => {
                             return (
@@ -95,10 +117,12 @@ class ShowContainer extends React.Component {
                           }
                         )
                         }
+                        <div className="col-md-2 offset-md-5" style={{margin : "00px"}}>
                         <center><ShowReadMore
                           getPost={this.getPost}
                           loadPageId= {this.loadPageId}
                         /></center>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -108,7 +132,6 @@ class ShowContainer extends React.Component {
           </div>
         </div>
       </div>
-
     );
 
   }

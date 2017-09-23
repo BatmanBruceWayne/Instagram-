@@ -36,7 +36,7 @@ export default class ProfileComponent extends React.Component {
   render() {
     return (
       <div onLoad={() => {
-        this.getPhotoToProfile(1);
+        this.getPhotoToProfile(0);
         this.getProfile;
       }}>
         <div className="wrapper">
