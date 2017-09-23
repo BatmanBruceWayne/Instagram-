@@ -3,17 +3,17 @@ import React from 'react';
 export default class ProfileComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.getPhotoToProfile=this.getPhotoToProfile.bind(this);
+    this.getPhotoToProfile = this.getPhotoToProfile.bind(this);
   }
 
-  getPhotoToProfile(value){
-    console.log("batman");
-    this.props.getPhotoToProfile(value);
+  getPhotoToProfile(e){
+    e.preventDefault();
+    this.props.getPhotoToProfile(1);
   }
 
   render() {
     return (
-      <div onLoad={() => this.getPhotoToProfile(0)}>
+      <div onLoad={this.getPhotoToProfile}>
         <div className="wrapper">
           <div className="page-header page-header-small"
                style={{"background-image": "url('http://t.wallpaperweb.org/wallpaper/nature/1920x1080/lakeside_v3_wallpaper_pack_by_mpk_1920x1080.jpg')"}}>
