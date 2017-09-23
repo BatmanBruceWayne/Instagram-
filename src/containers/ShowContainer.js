@@ -53,7 +53,7 @@ class ShowContainer extends React.Component {
             <div className="container ">
               <div className="row">
                 <div className="content-center">
-                  <div className="col-md-12 offset-md-1">
+                  <div className="col-md-8 offset-md-3">
                     <div className="row">
                       <div className="col-md-10">
                         <ShowHeader/>
