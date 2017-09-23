@@ -69,11 +69,6 @@ class ShowContainer extends React.Component {
         <div>
           <div className="blog-2 section section-gray">
             <div className="container ">
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
               <div className="row">
                 <div className="content-center">
                   <div className="col-md-10 offset-md-2">
