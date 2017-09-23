@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import initialState from './initialState';
 
 export default function getPhotoToProfileReducer(state = initialState.user, action) {
