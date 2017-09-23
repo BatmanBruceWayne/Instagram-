@@ -1,9 +1,9 @@
 import axios from 'axios';
-var user_id = localStorage.getItem("user_id");
 
 export function getPhotoToProfile(value) {
   return function (dispatch) {
     let token = localStorage.getItem("token");
+    let user_id = localStorage.getItem("user_id");
     axios.get('http://api.trainingcolorme.tk/page?token='+ token + '&page_id='+ value )
       .then(function (response) {
       dispatch(filterThePhoto(response.data.data.img_posts, user_id));

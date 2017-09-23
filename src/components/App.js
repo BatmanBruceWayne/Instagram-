@@ -5,9 +5,9 @@ import {Route} from 'react-router';
 import {Switch, NavLink} from 'react-router-dom';
 import ShowContainer from '../containers/ShowContainer';
 import ProfileContainer from "../containers/ProfileContainer";
-import PostPhotoComponent from "./PostPhotoComponent";
 import {LoginContainer} from "../containers/LoginContainer";
-import ProfileSettingComponent from "./ProfileSettingComponent";
+import PostPhotoContainer from "../containers/PostPhotoContainer";
+import ProfileSettingContainer from "../containers/ProfileSettingContainer";
 
 class App extends React.Component {
   render() {
@@ -82,9 +82,9 @@ class App extends React.Component {
           <Route exact path="/" component={LoginContainer}/>
           <Route path="/login" component={LoginContainer}/>
           <Route path="/profile" component={ProfileContainer}/>
-          <Route path="/profile-setting" component={ProfileSettingComponent}/>
+          <Route path="/profile-setting" component={ProfileSettingContainer}/>
           <Route path="/newsfeed" component={ShowContainer}/>
-          <Route path="/post_photo" component={PostPhotoComponent}/>
+          <Route path="/post_photo" component={PostPhotoContainer}/>
         </Switch>
 
       </div>

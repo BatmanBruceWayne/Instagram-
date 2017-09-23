@@ -31,7 +31,7 @@ export default class PostPhotoComponent extends React.Component {
     let api = 'http://api.trainingcolorme.tk/upload' + '?token=' + token;
     let formData = new FormData();
     formData.append('photo', this.state.photo_file);
-    formData.append('description', "test");
+    formData.append('description', this.state.description);
     let xhr = new XMLHttpRequest();
     xhr.open('POST', api, true);
     xhr.send(formData);

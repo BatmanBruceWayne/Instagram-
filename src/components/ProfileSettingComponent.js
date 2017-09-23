@@ -1,15 +1,25 @@
 import React from 'react';
-import NavbarComponent from "./NavbarComponent";
 
 export default class ProfileSettingComponent extends React.Component{
   constructor(props, context){
     super(props,context);
+    this.state = {
+      name:'',
+      phonenumber:'',
+      story:'',
+      gender:''
+    };
+    this.sendProfileOnAPI = this.sendProfileOnAPI.bind(this);
+  }
+
+  sendProfileOnAPI(e){
+    e.preventDefault();
+    this.props.sendProfileOnAPI(this.state);
   }
 
   render(){
     return(
       <div className="wrapper">
-        <NavbarComponent/>
         <div className="page-header page-header-xs settings-background" style={{"background-image" : "url('https://static.topcv.vn/company_logos/color-me-57e118423cae2.jpg')", width: '100%', 'z-index' : 0}}>
           <div className="filter"></div>
         </div>
@@ -37,29 +47,28 @@ export default class ProfileSettingComponent extends React.Component{
                     <div className="col-md-6 col-sm-6">
                       <div className="form-group">
                         <label>Name</label>
-                        <input type="text" className="form-control border-input" placeholder="Name"/>
+                        <input type="text" className="form-control border-input" placeholder="Name" onChange={(e)=>this.setState({name:e.target.value})}/>
                       </div>
                     </div>
 
                     <div className="col-md-6 col-sm-6">
                       <div className="form-group">
-                        <label>Email</label>
-                        <input type="text" className="form-control border-input" placeholder="Email"/>
+                        <label>Gender</label>
+                        <input type="text" className="form-control border-input" placeholder="Gender" onChange={(e)=>this.setState({gender:e.target.value})}/>
                       </div>
                     </div>
                   </div>
                   <div className="form-group">
                     <label>Phone</label>
-                    <input type="text" className="form-control border-input" placeholder="Job Title"/>
+                    <input type="text" className="form-control border-input" placeholder="Phone" onChange={(e)=>this.setState({phonenumber:e.target.value})}/>
                   </div>
                   <div className="form-group">
-                    <label>Quotes</label>
-                    <textarea className="form-control textarea-limited" placeholder="This is a textarea limited to 150 characters." rows="3"  maxlength="150"></textarea>
-                  <h5><small><span id="textarea-limited-message" className="pull-right">150 characters left</span></small></h5>
+                    <label>Story</label>
+                    <textarea className="form-control textarea-limited" placeholder="This is a textarea limited to 150 characters." rows="3"  maxlength ="150" onChange={(e)=>this.setState({story:e.target.value})}/>
               </div>
 
               <div className="text-center">
-                <button type="submit" className="btn btn-wd btn-info btn-round">Save</button>
+                <button type="submit" className="btn btn-wd btn-info btn-round" onClick={this.sendProfileOnAPI}>Save</button>
               </div>
             </form>
 
