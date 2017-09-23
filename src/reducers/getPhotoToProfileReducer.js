@@ -5,7 +5,7 @@ export default function getPhotoToProfileReducer(state = initialState.user, acti
     case 'FILTER_THE_PHOTO': {
       let img = action.value;
       let myPhoto = img.filter(function (val) {
-        return val.user_id === action.user_id;
+        return val.user_id == action.user_id;
       });
 
       return {
