@@ -23,28 +23,28 @@ export default {
       "deleted_at": null
     },
   ],
-  isAdding : false,
+  isAdding: false,
   page_id: 0,
   token: "token state",
-  loginState : {
-    status : 0,
-    error : "This is error you son of bitches.",
-    token : ""
+  loginState: {
+    status: 0,
+    error: "This is error you son of bitches.",
+    token: ""
   },
 
-user: {
-  myPhoto: [
-    {
-      "id": "",
-      "description": "",
-      "img_url": "",
-      "user_id": "",
-      "created_at": "",
-      "updated_at": "",
-      "deleted_at": "",
-      "like": "",
-      "user_name": ""
-    }
-  ]
-}
+  user: {
+    myPhoto: [
+      {
+        "id": "",
+        "description": "",
+        "img_url": "",
+        "user_id": "",
+        "created_at": "",
+        "updated_at": "",
+        "deleted_at": "",
+        "like": "",
+        "user_name": ""
+      }
+    ]
+  }
 };

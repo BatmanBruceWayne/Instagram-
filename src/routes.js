@@ -3,15 +3,12 @@ import {Route, IndexRoute, Router, browserHistory} from 'react-router';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import ShowContainer from "./containers/ShowContainer";
-import PostPhotoContainer from "./containers/PostPhotoContainer";
-import {LoginContainer} from "./containers/LoginContainer";
+import ProfileContainer from "./containers/ProfileContainer";
 
 ReactDOM.render(
   <Route path="/" component={App}>
-    <IndexRoute component={PostPhotoContainer}/>
-    <Route path="/" component={ShowContainer}/>
-    <Route path="/login" component={LoginContainer}/>
-    <Route path="/profile" component={ShowContainer}/>
+    <IndexRoute component={ShowContainer}/>
+    <Route path="/profile" component={ProfileContainer}/>
   </Route>,
   document.getElementById('app'));
 

@@ -1,19 +1,33 @@
+import {Redirect} from 'react-router'
+import {Switch, NavLink} from 'react-router-dom';
+import {Route} from 'react-router';
 import React from 'react';
+import ProfileContainer from "../containers/ProfileContainer";
+import ProfileSettingComponent from "./ProfileSettingComponent";
 
 export default class ProfileComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
+
     this.getPhotoToProfile=this.getPhotoToProfile.bind(this);
+    this.direct = this.direct.bind(this);
+    this.state ={
+      direct : "/profile"
+    };
   }
 
+  direct(){
+    console.log('direct',this.state);
+    this.setState({direct:"/profile-setting"});
+    console.log('direct',this.state);
+  }
   getPhotoToProfile(value){
-    console.log("batman");
     this.props.getPhotoToProfile(value);
   }
 
   render() {
     return (
-      <div onLoad={() => this.getPhotoToProfile(0)}>
+      <div onLoad={this.getPhotoToProfile}>
         <div className="wrapper">
           <div className="page-header page-header-small"
                style={{"background-image": "url('http://t.wallpaperweb.org/wallpaper/nature/1920x1080/lakeside_v3_wallpaper_pack_by_mpk_1920x1080.jpg')"}}>
@@ -35,7 +49,12 @@ export default class ProfileComponent extends React.Component {
                     <div className="col-md-5 text-center">
                       <h3>Bruce Wayne</h3>
                     </div>
-                    <button className="col-md-5 btn btn-danger">Edit Profile</button>
+
+                    <button className="col-md-5 btn btn-danger" onClick={this.direct}>
+                      Edit Profile
+                      <Redirect to={this.state.direct}/>
+                    </button>
+
                   </div>
                   <div className="row">
                     <div className="col-md-4"><p>4 posts</p></div>

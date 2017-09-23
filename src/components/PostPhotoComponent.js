@@ -1,22 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 
 export default class PostPhotoComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       photo_file:'',
-      photo_url: 'http://images.tapchianhdep.net/15-10top-12-hinh-anh-girl-xinh-de-thuong-nhat-viet-nam11.jpg',
-      description: ''
+      photo_url: '',
+      description: '',
     };
     this.handleImageChange = this.handleImageChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.sendPhotoOnAPINoLoad = this.sendPhotoOnAPINoLoad.bind(this);
-  }
-
-
-  handleSubmit(e) {
-    e.preventDefault();
   }
 
   handleImageChange(e) {
@@ -36,18 +29,13 @@ export default class PostPhotoComponent extends React.Component {
     e.preventDefault();
     let token = localStorage.getItem("token");
     let api = 'http://api.trainingcolorme.tk/upload' + '?token=' + token;
-    console.log("batman");
-    axios.post(api,
-      {
-        photo: this.state.photo_file,
-        description: this.state.description
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    let formData = new FormData();
+    formData.append('photo', this.state.photo_file);
+    formData.append('description', "test");
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', api, true);
+    xhr.send(formData);
+
   }
 
   render() {
