@@ -2,8 +2,7 @@
 import React from 'react';
 
 import NavbarComponent from './NavbarComponent'
-import * as actions from '../actions/Actions'
-import {Router,Redirect} from 'react-router'
+import {Redirect} from 'react-router'
 
 import axios from 'axios';
 import initialState from '../reducers/initialState';
@@ -17,22 +16,32 @@ class LoginComponent extends React.Component {
       error : "",
       status : "/login"
     }
-
     this.login.bind(this);
+    axios.get('http://api.trainingcolorme.tk/profile/'+
+              localStorage.getItem("userid")+
+              '?token='+
+              localStorage.getItem("token"))
+    .then((response)=>{
+        console.log('get test',response);
+      if(response.data.status)this.setState({status: "/newsfeed"});
+
+    }).catch((error)=>{
+        console.log('error test',error);
+    });
   }
 
   login(e) {
     console.log("LoginComponent -> login(data)", this.state);
     e.preventDefault();
-    axios.post('http://api.trainingcolorme.tk/login-user',this.state)
+      axios.post('http://api.trainingcolorme.tk/login-user',this.state)
       .then((response) => {
         console.log('respone', response);
         if(!response.data.status)
           this.setState({error: response.data.data.message});
         else {
           localStorage.setItem("token", response.data.data.token);
-          this.state.status = "/profile";
-          this.forceUpdate();
+          localStorage.setItem("userid", response.data.data.userid);
+          this.setState({status: "/profile"});
         }
         this.props.login(response.data);
       })
@@ -43,8 +52,7 @@ class LoginComponent extends React.Component {
   }
 
   render() {
-
-    console.log("abc",this.state);
+    console.log("Login_component_render",this.state);
     return (
     <div className="full-screen register">
       <NavbarComponent/>
