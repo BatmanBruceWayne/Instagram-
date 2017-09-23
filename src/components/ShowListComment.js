@@ -7,7 +7,6 @@ class ListComment extends React.Component {
 
   render() {
     if (this.props.post_id === this.props.id) {
-      {console.log("ohohohhohohhh", this.props.post_id + this.props.id, "CONTENT", this.props.updated_at);}
       return (
         <div>
           <div className="media">

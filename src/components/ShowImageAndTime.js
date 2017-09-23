@@ -1,5 +1,4 @@
 import React from 'react';
-import ProfileComponent from "./GuestProfileComponent";
 
 class ShowImageAndTime extends React.Component {
   constructor(props) {
@@ -31,8 +30,7 @@ class ShowImageAndTime extends React.Component {
               "padding-top": "0px",
               "padding-bottom": "0px"
             }}>
-              <p>vnsfoivodv vjdslvjj lisdjclskdj sdlsdl sjdl sdnclksndk nsdkvnksdnvdo dslkdsl sldkdsl sdl sld lkskdl
-                dsksdllksll klskl ksldk dls klk skldk klsdk lsdls klsdldvnsdlvshd kwsr svhs</p>
+              <p>{this.props.description}</p>
             </div>
           </div>
         </div>

@@ -5,6 +5,8 @@ import {Route} from 'react-router';
 import {Switch, NavLink} from 'react-router-dom';
 import ShowContainer from '../containers/ShowContainer';
 import ProfileContainer from "../containers/ProfileContainer";
+
+
 import {LoginContainer} from "../containers/LoginContainer";
 import PostPhotoContainer from "../containers/PostPhotoContainer";
 import ProfileSettingContainer from "../containers/ProfileSettingContainer";
@@ -79,6 +81,7 @@ class App extends React.Component {
         </div>
 
         <Switch>
+
           <Route exact path="/" component={LoginContainer}/>
           <Route path="/login" component={LoginContainer}/>
           <Route path="/profile" component={ProfileContainer}/>
