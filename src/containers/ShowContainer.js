@@ -6,7 +6,6 @@ import * as Actions from '../actions/Actions';
 import ShowUserComponent from "../components/ShowUserComponent";
 import ShowImageAndTime from "../components/ShowImageAndTime";
 import ShowReadMore from "../components/ShowReadMore";
-import NavbarComponent from "../components/NavbarComponent";
 import ShowHeader from "../components/ShowHeader";
 import ShowIcon from "../components/ShowIcon";
 import ShowComment from "../components/ShowComment";
@@ -42,7 +41,6 @@ class ShowContainer extends React.Component {
                 <div className="content-center">
                   <div className="col-md-10 offset-md-2">
                     <div className="row">
-                      <NavbarComponent/>
                       <div className="col-md-10">
                         <ShowHeader/>
                         {this.props.listPost.map(
