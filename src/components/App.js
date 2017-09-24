@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <nav className="navbar navbar-toggleable-md bg-success fixed-top navbar-default" color-on-scroll="200">
+          <nav className="navbar navbar-toggleable-md nav-down bg-success fixed-top navbar-default" color-on-scroll="200">
             <div className="container">
               <NavLink extra to="/newsfeed">
                 <button className="btn btn-just-icon btn-instagram">

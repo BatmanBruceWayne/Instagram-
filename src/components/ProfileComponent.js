@@ -9,15 +9,15 @@ export default class ProfileComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.directToEdit = this.directToEdit.bind(this);
-    this.directToPost = this.directToPost.bind(this);
-    this.getProfile = this.getProfile.bind(this);
-    this.increase = this.increase.bind(this);
-
     this.state = {
       direct: "/profile",
       page_id: 1
     };
+    this.getProfile = this.getProfile.bind(this);
+    this.increase = this.increase.bind(this);
+    this.directToLogin = this.directToLogin.bind(this);
+    this.directToSetting = this.directToSetting.bind(this);
+    this.directToPost = this.directToPost.bind(this);
   }
   directToSetting(){
     this.setState({direct:"/profile-setting"});
@@ -26,6 +26,9 @@ export default class ProfileComponent extends React.Component {
     localStorage.setItem("token","");
     localStorage.setItem("userid","");
     this.setState({direct:"/login"});
+  }
+  directToPost(){
+    this.setState({direct: "/post_photo"});
   }
 
   getProfile(){
@@ -67,12 +70,12 @@ export default class ProfileComponent extends React.Component {
 
                     </div>
 
-                    <button className="col-md-3 btn btn-danger" onClick={this.directToSetting}>
+                    <button className="col-md-3 btn btn-success" onClick={this.directToSetting}>
                       Edit Profile
                       <Redirect to={this.state.direct}/>
                     </button>
                     <div className="col-md-1"></div>
-                    <button className="col-md-3 btn btn-danger" onClick={this.directToLogin}>
+                    <button className="col-md-3 btn btn-success" onClick={this.directToLogin}>
                       Logout
                       <Redirect to={this.state.direct}/>
                     </button>
@@ -91,13 +94,9 @@ export default class ProfileComponent extends React.Component {
 
           <div className="col-md-12 text-center" style={{"margin-top": "30px"}}>
 
-            <button type="button" className="btn btn-danger btn-round">Danger</button>
 
-              <button className="btn btn-just-icon btn-border btn-youtube" >
-                <i className="fa fa-instagram" aria-hidden="true"></i>
-              </button>
+            <button type="button" className="btn btn-success btn-round" onClick={this.directToPost}>Share your photo with us !</button>
 
-            <button type="button" className="btn btn-danger btn-round">Danger</button>
           </div>
 
           <div className="latest-offers section-with-space">
