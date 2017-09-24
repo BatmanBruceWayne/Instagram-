@@ -9,15 +9,19 @@ export default class ProfileComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.getPhotoToProfile=this.getPhotoToProfile.bind(this);
-    this.direct = this.direct.bind(this);
+    this.directToSetting = this.directToSetting.bind(this);
+    this.directToLogin = this.directToLogin.bind(this);
     this.state ={
       direct : "/profile"
     }
   }
-  direct(){
-    console.log('direct',this.state);
+  directToSetting(){
     this.setState({direct:"/profile-setting"});
-    console.log('direct',this.state);
+  }
+  directToLogin(){
+    localStorage.setItem("token","");
+    localStorage.setItem("userid","");
+    this.setState({direct:"/login"});
   }
   getPhotoToProfile(value){
     this.props.getPhotoToProfile(value);
@@ -36,23 +40,27 @@ export default class ProfileComponent extends React.Component {
             <div className="container-fluid">
               <div className="row">
 
-                <div className="col-md-5 text-center">
+                <div className="col-md-3 text-center">
                   <img
                     src="https://sites.google.com/site/baticlubfcsa/_/rsrc/1476382112707/home/images.jpg?height=236&width=320"
                     className="rounded-circle" width="150px" height="150px" style={{align: 'right'}}/>
 
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-9">
                   <div className="row">
-                    <div className="col-md-5 text-center">
+                    <div className="col-md-4 text-center">
                       <h3>Bruce Wayne</h3>
                     </div>
 
-                    <button className="col-md-5 btn btn-danger" onClick={this.direct}>
+                    <button className="col-md-3 btn btn-danger" onClick={this.directToSetting}>
                       Edit Profile
                       <Redirect to={this.state.direct}/>
                     </button>
-
+                    <div className="col-md-1"></div>
+                    <button className="col-md-3 btn btn-danger" onClick={this.directToLogin}>
+                      Logout
+                      <Redirect to={this.state.direct}/>
+                    </button>
                   </div>
                   <div className="row">
                     <div className="col-md-4"><p>4 posts</p></div>
