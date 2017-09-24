@@ -3,8 +3,6 @@ export default {
   ],
   listComment: [
   ],
-  listUser:[
-  ],
   info : {},
   isAdding: true,
   page_id: 2,

@@ -112,6 +112,7 @@ class ShowContainer extends React.Component {
                                   id = {value.id}
                                   postComment = {this.postComment}
                                     getComment = {this.getComment}
+                                  info = {this.props.info}
                                   />
                                   </div>
                                 </div>
