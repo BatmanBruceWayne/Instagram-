@@ -14,6 +14,7 @@ export function sendProfileOnAPI(value) {
       })
       .then(function (response) {
         console.log(response);
+
       })
       .catch(function (error) {
         console.log(error);
@@ -25,13 +26,22 @@ export function getProfile() {
   return function (dispatch) {
     let token = localStorage.getItem("token");
     let user_id = localStorage.getItem("user_id");
+    console.log("fuck");
+
     axios.get('http://api.trainingcolorme.tk/profile' + user_id + '?token='+ token)
       .then(function (response) {
-        console.log(response);
+        dispatch(editProfile(response.data.user));
+
       })
       .catch(function (error) {
         throw (error);
       });
-
   };
+}
+
+export function editProfile(value){
+  return({
+    type:'EDIT_PROFILE',
+    value: value
+  });
 }

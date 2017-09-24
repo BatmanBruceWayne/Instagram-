@@ -10,12 +10,18 @@ export default function getPhotoToProfileReducer(state = initialState.user, acti
       });
 
       return {
-        ...state,
-        ...{
-          myPhoto: myPhoto
-        }
+        ...state, myPhoto : [... state.myPhoto , ... myPhoto ],
       };
     }
+
+    case 'EDIT_PROFILE':
+      return{
+        ...state,
+        ...{
+          myProfile: action.user
+        }
+      };
+
     default:
       return state;
   }

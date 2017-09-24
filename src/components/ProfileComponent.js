@@ -5,13 +5,14 @@ export default class ProfileComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.getPhotoToProfile = this.getPhotoToProfile.bind(this);
     this.directToEdit = this.directToEdit.bind(this);
     this.directToPost = this.directToPost.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.increase = this.increase.bind(this);
 
     this.state = {
-      direct: "/profile"
+      direct: "/profile",
+      page_id: 1
     };
   }
 
@@ -25,20 +26,21 @@ export default class ProfileComponent extends React.Component {
     this.setState({direct: "/post_photo"});
   }
 
-  getPhotoToProfile(value) {
-    this.props.getPhotoToProfile(value);
+  getProfile(){
+    this.props.getProfile();
+    console.log("superman");
   }
 
-  getProfile(){
-    this.props.getProfile;
+  increase(e){
+    e.preventDefault();
+    console.log("wonder wonman");
+    this.setState({page_id: this.state.page_id + 1});
+    this.props.getPhotoToProfile(this.state.page_id);
   }
 
   render() {
     return (
-      <div onLoad={() => {
-        this.getPhotoToProfile(1);
-        this.getProfile;
-      }}>
+      <div onLoad={this.getProfile}>
         <div className="wrapper">
           <div className="page-header page-header-small"
                style={{"background-image": "url('http://t.wallpaperweb.org/wallpaper/nature/1920x1080/lakeside_v3_wallpaper_pack_by_mpk_1920x1080.jpg')"}}>
@@ -52,14 +54,14 @@ export default class ProfileComponent extends React.Component {
 
                 <div className="col-md-5 text-center">
                   <img
-                    src="https://sites.google.com/site/baticlubfcsa/_/rsrc/1476382112707/home/images.jpg?height=236&width=320"
+                    src={this.props.myProfile.photo}
                     className="rounded-circle" width="150px" height="150px" style={{align: 'right'}}/>
 
                 </div>
                 <div className="col-md-6">
                   <div className="row">
                     <div className="col-md-5 text-center">
-                      <h3>Bruce Wayne</h3>
+                      <h3>{this.props.myProfile.name}</h3>
                     </div>
 
 
@@ -70,10 +72,10 @@ export default class ProfileComponent extends React.Component {
 
                   </div>
                   <div className="row">
-                    <div className="col-md-6"><p><b>Gender:  </b>Male</p></div>
-                    <div className="col-md-6"><p><b>Phone:  </b>0941439925</p></div>
+                    <div className="col-md-6"><p><b>Gender:  </b>{this.props.myProfile.gender}</p></div>
+                    <div className="col-md-6"><p><b>Phone:  </b>{this.props.myProfile.phonenumber}</p></div>
                   </div>
-                  <p><b><b>Yêu màu hường và ghét sự giả dối </b></b></p>
+                  <p><b><b>{this.props.myProfile.story}</b></b></p>
                 </div>
               </div>
 
@@ -110,6 +112,9 @@ export default class ProfileComponent extends React.Component {
                   })
                 }
               </div>
+
+              <button type="button" className="btn btn-outline-success btn-round btn-block" onClick={this.increase}>More Photo ...</button>
+
             </div>
           </div>
         </div>
