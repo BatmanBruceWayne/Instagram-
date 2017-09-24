@@ -18,6 +18,7 @@ class ShowContainer extends React.Component {
     super(props, context);
     this.getPost = this.getPost.bind(this);
     this.getComment =this.getComment.bind(this);
+    this.getInfo = this.getInfo.bind(this);
     this.isAddComment = this.isAddComment.bind(this);
     this.loadPageId = this.loadPageId.bind(this);
     this.postLike = this.postLike.bind(this);
@@ -30,14 +31,18 @@ class ShowContainer extends React.Component {
   getPost(value) {
     this.props.getDataToShow.getPostToShow(value);
   }
+  getComment(){
+    this.props.getDataToShow.getCommentToShow();
+  }
+  getInfo(user_id){
+    this.props.getDataToShow.getInfoToShow(user_id);
+  }
+
   isAddComment(){
     this.props.actions.isAddComment() ;
   }
   loadPageId(){
     this.props.getDataToShow.loadPageId();
-  }
-  getComment(){
-    this.props.getDataToShow.getCommentToShow();
   }
   postLike(post_id, user_id){
     this.props.postLikeAndComment.postLike(post_id,user_id);
@@ -57,17 +62,12 @@ class ShowContainer extends React.Component {
           <div className="content-center">
             <div className="container">
               <div className="motto">
-                <ShowHeader/>
-                { this.props.isAdding ?
-                  <ShowReadMore
+                <ShowHeader
+                  isAdding = {this.props.isAdding}
                   getPost={this.getPost}
                   loadPageId= {this.loadPageId}
-                  title = "Go with me ... "
                   isAddComment = {this.isAddComment}
-                  add = "1"
                 />
-                : <div></div>
-                }
               </div>
             </div>
           </div>
@@ -87,6 +87,9 @@ class ShowContainer extends React.Component {
                               <div className="card card-blog" style={{backgroundColor: "#FFFAF0"}}>
                                 <ShowUserComponent
                                   user_name={value.user_name}
+                                  user_id= {value.user_id}
+                                  info = {this.props.info}
+                                  getInfo = {this.getInfo}
                                 />
                                 <ShowImageAndTime
                                   description={value.description}
@@ -109,6 +112,7 @@ class ShowContainer extends React.Component {
                                   id = {value.id}
                                   postComment = {this.postComment}
                                     getComment = {this.getComment}
+                                  info = {this.props.info}
                                   />
                                   </div>
                                 </div>
@@ -146,7 +150,8 @@ function mapStateToProps(state) {
   return {
     listPost: state.showReducer.listPost,
     isAdding : state.showReducer.isAdding,
-    listComment : state.showReducer.listComment
+    listComment : state.showReducer.listComment,
+    info : state.showReducer.info
   };
 }
 

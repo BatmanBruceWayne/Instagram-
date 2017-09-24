@@ -1,9 +1,5 @@
 import {Redirect} from 'react-router'
-import {Switch, NavLink} from 'react-router-dom';
-import {Route} from 'react-router';
 import React from 'react';
-import ProfileContainer from "../containers/ProfileContainer";
-import ProfileSettingComponent from "./ProfileSettingComponent";
 
 export default class ProfileComponent extends React.Component {
   constructor(props, context) {
@@ -38,7 +34,7 @@ export default class ProfileComponent extends React.Component {
 
   increase(e){
     e.preventDefault();
-    console.log("wonder wonman");
+    console.log("wonder wonman", localStorage.getItem("userid"));
     this.setState({page_id: this.state.page_id + 1});
     this.props.getPhotoToProfile(this.state.page_id);
   }
@@ -59,7 +55,7 @@ export default class ProfileComponent extends React.Component {
 
                 <div className="col-md-3 text-center">
                   <img
-                    src={this.props.myProfile.photo}
+                    src={this.props.myProfile.avt_url}
                     className="rounded-circle" width="150px" height="150px" style={{align: 'right'}}/>
 
                 </div>

@@ -8,6 +8,15 @@ export default function showReducer(state = initialState, action) {
       return {
         ...state,listPost : [... state.listPost , ... action.listPost ],
   };
+    case 'LOAD_COMMENT':
+      return{
+        ...state,listComment : [... action.listComment ],
+      };
+    case 'LOAD_INFO': {
+      return {
+        ...state, info: [...action.info]
+      };
+    }
     case 'IS_ADD_COMMENT':
       return{
         ...state,isAdding : !state.isAdding
@@ -15,10 +24,6 @@ export default function showReducer(state = initialState, action) {
     case 'LOAD_PAGE_ID' :
       return{
         ...state,page_id: state.page_id + 1
-      };
-    case 'LOAD_COMMENT':
-      return{
-        ...state,listComment : [... action.listComment ],
       };
     default:
       return state ;

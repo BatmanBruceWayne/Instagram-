@@ -18,7 +18,7 @@ export default function getPhotoToProfileReducer(state = initialState.user, acti
       return{
         ...state,
         ...{
-          myProfile: action.user
+          myProfile: action.value,
         }
       };
 
