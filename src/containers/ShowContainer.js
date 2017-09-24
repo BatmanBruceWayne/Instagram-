@@ -24,6 +24,7 @@ class ShowContainer extends React.Component {
     this.postComment = this.postComment.bind(this);
     console.log("CONTAINER_PROPS", this.props.actions.isAddComment);
 
+
   }
 
   getPost(value) {
@@ -48,15 +49,38 @@ class ShowContainer extends React.Component {
   render() {
     return (
       <div>
+        <br/>
+        <br/>
+        <br/>
+        <div className="page-header" data-parallax="true" style={{"background-image": "url(../Girl.jpg)" , transform: "translate3d(2px, 3px, 04x);"}}>
+          <div className="filter"></div>
+          <div className="content-center">
+            <div className="container">
+              <div className="motto">
+                <ShowHeader/>
+                { this.props.isAdding ?
+                  <ShowReadMore
+                  getPost={this.getPost}
+                  loadPageId= {this.loadPageId}
+                  title = "Go with me ... "
+                  isAddComment = {this.isAddComment}
+                  add = "1"
+                />
+                : <div></div>
+                }
+              </div>
+            </div>
+          </div>
+
+        </div>
         <div>
           <div className="blog-2 section section-gray">
             <div className="container ">
               <div className="row">
                 <div className="content-center">
-                  <div className="col-md-8 offset-md-3">
+                  <div className="col-md-10 offset-md-2">
                     <div className="row">
                       <div className="col-md-10">
-                        <ShowHeader/>
                         {this.props.listPost.map(
                           (value) => {
                             return (
@@ -95,10 +119,14 @@ class ShowContainer extends React.Component {
                           }
                         )
                         }
+                        <div className="col-md-12 offset-md-3" style={{margin : "00px", padding : '0px'}}>
                         <center><ShowReadMore
                           getPost={this.getPost}
                           loadPageId= {this.loadPageId}
+                          title = "See more girl ... "
+                          add = "2"
                         /></center>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -108,7 +136,6 @@ class ShowContainer extends React.Component {
           </div>
         </div>
       </div>
-
     );
 
   }

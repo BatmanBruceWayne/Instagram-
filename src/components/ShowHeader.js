@@ -8,8 +8,10 @@ class ShowHeader extends React.Component{
   render(){
     return(
       <div>
-        <center><h1 className="title" style={{color: "mediumseagreen", "font-family": "TlwgTypewriter"}}>
-          Instagram</h1></center>
+        <center><h1 className="title" style={{color: "mediumseagreen", "font-family": "TlwgTypewriter" , "font-size" : "80px"}}>
+          Instagram</h1></center><br/>
+        <h3 className="description">Start designing your landing page here.</h3>
+        <br/>
         <br/><br/>
       </div>
     );
