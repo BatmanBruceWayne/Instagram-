@@ -1,5 +1,4 @@
 import React from 'react';
-import ProfileComponent from "./GuestProfileComponent";
 
 class ShowImageAndTime extends React.Component {
   constructor(props) {
@@ -13,11 +12,10 @@ class ShowImageAndTime extends React.Component {
         <div>
           {/*UPDATE TIME*/}
           {/*IMAGE      */}
-          <div>
+          <center>
             <a href={this.props.img_url} >
-              <img id="image" src={this.props.img_url} />
-            </a>
-          </div>
+              <img src={this.props.img_url} />
+            </a></center>
           <br/>
           <div className="col-md-4 offset-md-8" >
             <h6 className="card-category text-success"><i className="fa fa-clock-o"/>
@@ -31,8 +29,7 @@ class ShowImageAndTime extends React.Component {
               "padding-top": "0px",
               "padding-bottom": "0px"
             }}>
-              <p>vnsfoivodv vjdslvjj lisdjclskdj sdlsdl sjdl sdnclksndk nsdkvnksdnvdo dslkdsl sldkdsl sdl sld lkskdl
-                dsksdllksll klskl ksldk dls klk skldk klsdk lsdls klsdldvnsdlvshd kwsr svhs</p>
+              <p>{this.props.description}</p>
             </div>
           </div>
         </div>

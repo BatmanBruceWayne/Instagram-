@@ -1,0 +1,13 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _redux = require('redux');
+var _reactRouterRedux = require('react-router-redux');
+var _showReducer = require('./showReducer');var _showReducer2 = _interopRequireDefault(_showReducer);
+var _getPhotoToProfileReducer = require('./getPhotoToProfileReducer');var _getPhotoToProfileReducer2 = _interopRequireDefault(_getPhotoToProfileReducer);
+var _loginReducer = require('./loginReducer');var _loginReducer2 = _interopRequireDefault(_loginReducer);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var rootReducer = (0, _redux.combineReducers)({
+  routing: _reactRouterRedux.routerReducer,
+  showReducer: _showReducer2.default,
+  getPhotoToProfileReducer: _getPhotoToProfileReducer2.default,
+  loginReducer: _loginReducer2.default });exports.default =
+
+
+rootReducer;

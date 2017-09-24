@@ -6,7 +6,7 @@ export function getPostToShow(value) {
     console.log( "ACTION :" , localStorage.getItem("token") , "      VALUE :" , value);
     axios.get('http://api.trainingcolorme.tk/page?token='+localStorage.getItem("token")+'&page_id='+value )
   .then(function (response) {
-        dispatch(loadSuccess(response));
+        dispatch(loadPost(response));
       })
       .catch(function (error) {
         throw (error);
@@ -17,6 +17,7 @@ export function getCommentToShow() {
   return function (dispatch) {
     axios.get('http://api.trainingcolorme.tk/imgC-data?token='+localStorage.getItem("token") )
       .then(function (response) {
+        console.log("COMMENT IN ACTION",response.data.data);
         dispatch(loadComment(response));
       })
       .catch(function (error) {
@@ -24,9 +25,9 @@ export function getCommentToShow() {
       });
   };
 }
-export function loadSuccess(response) {
+export function loadPost(response) {
   return ({
-    type: "LOAD_SUCCESS",
+    type: "LOAD_POST",
     listPost: response.data.data.img_posts,
   });
 }

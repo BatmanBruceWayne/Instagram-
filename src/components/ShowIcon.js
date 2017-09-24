@@ -3,7 +3,7 @@ import React from 'react';
 class ShowIcon extends React.Component {
   constructor(props) {
     super(props);
-    console.log("COMPONENT_ICON", this.props.isAddComment);
+    console.log("COMPONENT_ICON", this.props.isAddComment, "POST_ID" , this.props.post_id , "    " , this.props.getComment());
   }
 
   render() {
@@ -11,7 +11,7 @@ class ShowIcon extends React.Component {
       <div>
         <div className="row">
           <div className="col-md-2">
-            <button type="text" className="btn btn-just-icon btn-border btn-google">
+            <button type="text" className="btn btn-just-icon btn-border btn-google" onClick={() => this.props.postLike(this.props.post_id, this.props.user_id)}>
               <i className="fa fa-heart-o" aria-hidden="true"/>
             </button>
             <span className="card-title">

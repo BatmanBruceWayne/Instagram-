@@ -1,19 +1,22 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Route} from 'react-router';
 import {Switch, NavLink} from 'react-router-dom';
 import ShowContainer from '../containers/ShowContainer';
 import ProfileContainer from "../containers/ProfileContainer";
-import PostPhotoComponent from "./PostPhotoComponent";
+
+
 import {LoginContainer} from "../containers/LoginContainer";
-import ProfileSettingComponent from "./ProfileSettingComponent";
+import PostPhotoContainer from "../containers/PostPhotoContainer";
+import ProfileSettingContainer from "../containers/ProfileSettingContainer";
 
 class App extends React.Component {
   render() {
     return (
       <div>
         <div>
-          <nav className="navbar navbar-toggleable-md bg-success fixed-top navbar-default" color-on-scroll="200">
+          <nav className="navbar navbar-toggleable-md nav-down bg-success fixed-top navbar-default navbar-transparent" color-on-scroll="200">
             <div className="container">
               <NavLink extra to="/newsfeed">
                 <button className="btn btn-just-icon btn-instagram">
@@ -23,7 +26,7 @@ class App extends React.Component {
 
               <NavLink extra to="/newsfeed">
 
-                  <a className="navbar-brand" href="#paper-kit">INSTAGRAM<i className="fa fa-instagram" aria-hidden="true"></i></a>
+                <a className="navbar-brand" href="#paper-kit">INSTAGRAM<i className="fa fa-instagram" aria-hidden="true"></i></a>
               </NavLink>
 
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,9 +35,9 @@ class App extends React.Component {
                     <form className="form-inline">
                       <input className="form-control mr-sm-2 no-border" type="text" placeholder="Search"/>
                       <NavLink to="/post_photo">
-                      <button type="submit" className="btn btn-primary btn-just-icon btn-round ">
-                        <i className="fa fa-search"></i>
-                      </button>
+                        <button type="submit" className="btn btn-primary btn-just-icon btn-round ">
+                          <i className="fa fa-search"></i>
+                        </button>
                       </NavLink>
                     </form>
                   </li>
@@ -78,12 +81,13 @@ class App extends React.Component {
         </div>
 
         <Switch>
+
           <Route exact path="/" component={LoginContainer}/>
           <Route path="/login" component={LoginContainer}/>
           <Route path="/profile" component={ProfileContainer}/>
-          <Route path="/profile-setting" component={ProfileSettingComponent}/>
+          <Route path="/profile-setting" component={ProfileSettingContainer}/>
           <Route path="/newsfeed" component={ShowContainer}/>
-          <Route path="/post_photo" component={PostPhotoComponent}/>
+          <Route path="/post_photo" component={PostPhotoContainer}/>
         </Switch>
 
       </div>
@@ -96,5 +100,4 @@ App.propTypes = {
 };
 
 export default App;
-
 
