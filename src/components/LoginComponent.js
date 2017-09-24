@@ -31,7 +31,6 @@ class LoginComponent extends React.Component {
   }
 
   login(e) {
-    console.log("LoginComponent -> login(data)", this.state);
     e.preventDefault();
     axios.post('http://api.trainingcolorme.tk/login-user',this.state)
       .then((response) => {
@@ -40,7 +39,7 @@ class LoginComponent extends React.Component {
           this.setState({error: response.data.data.message});
         else {
           localStorage.setItem("token", response.data.data.token);
-          localStorage.setItem("userid", response.data.data.userid);
+          localStorage.setItem("userid", response.data.data.user.id);
           this.setState({status: "/profile"});
         }
         this.props.login(response.data);
