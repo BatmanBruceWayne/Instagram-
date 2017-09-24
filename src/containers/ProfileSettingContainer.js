@@ -4,32 +4,33 @@ import {bindActionCreators} from 'redux';
 import ProfileSettingComponent from '../components/ProfileSettingComponent';
 import * as postProfileAction from '../actions/postProfileAction';
 
-class ProfileSettingContainer extends React.Component{
-  constructor(props, context){
+class ProfileSettingContainer extends React.Component {
+  constructor(props, context) {
     super(props, context);
     this.sendProfileOnAPI = this.sendProfileOnAPI.bind(this);
   }
 
-  sendProfileOnAPI(value){
+  sendProfileOnAPI(value) {
     this.props.postProfileAction.sendProfileOnAPI(value);
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <ProfileSettingComponent
-        sendProfileOnAPI={this.sendProfileOnAPI}/>
+        sendProfileOnAPI={this.sendProfileOnAPI}
+        myProfile={this.props.myProfile}/>
     );
   }
 }
 
-function mapStateToProps() {
-  return{
-
+function mapStateToProps(state) {
+  return {
+    myProfile: state.getPhotoToProfileReducer.myProfile
   };
 }
 
-function mapDispatchToProps(dispatch){
-  return{
+function mapDispatchToProps(dispatch) {
+  return {
     postProfileAction: bindActionCreators(postProfileAction, dispatch)
   };
 }

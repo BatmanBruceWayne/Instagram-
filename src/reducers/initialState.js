@@ -22,18 +22,17 @@ export default {
   },
 
   user: {
-    myPhoto: [
-      {
-        "id": "",
-        "description": "",
-        "img_url": "",
-        "user_id": "",
-        "created_at": "",
-        "updated_at": "",
-        "deleted_at": "",
-        "like": "",
-        "user_name": ""
-      }
-    ]
+    myPhoto: [],
+    myProfile:{
+      "id": "29",
+      "name": "Bruce Wayne",
+      "email": "tientai.nguyen.1501@gmail.com",
+      "created_at": "",
+      "updated_at": "",
+      "phonenumber": "0941439925",
+      "story": "Yêu màu hường và ghét sự giả dối",
+      "gender": "Male",
+      "photo":"http://www.planwallpaper.com/static/images/maxresdefault_pzfcoB9.jpg"
+    }
   }
 };

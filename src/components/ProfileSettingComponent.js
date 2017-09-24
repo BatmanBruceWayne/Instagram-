@@ -7,14 +7,31 @@ export default class ProfileSettingComponent extends React.Component{
       name:'',
       phonenumber:'',
       story:'',
-      gender:''
+      gender:'',
+      photo_url:this.props.myProfile.photo,
+      photo_file:''
     };
     this.sendProfileOnAPI = this.sendProfileOnAPI.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
+
   }
 
   sendProfileOnAPI(e){
     e.preventDefault();
     this.props.sendProfileOnAPI(this.state);
+  }
+
+  handleImageChange(e) {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        photo_file: file,
+        photo_url: reader.result
+      });
+    };
+    reader.readAsDataURL(file);
   }
 
   render(){
@@ -28,14 +45,17 @@ export default class ProfileSettingComponent extends React.Component{
             <div className="row">
               <div className="profile-picture">
                 <div className="fileinput fileinput-new" data-provides="fileinput">
-                  <div className="fileinput-new img-no-padding">
-                    <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/16106032_359851404373400_3928185856684765804_n.jpg?oh=7d2dc70a8f8b8aeb00718e092a5337ed&oe=5A5A0F61" alt="..."/>
+                  <div className="img-no-padding">
+                    <img
+                      src={this.state.photo_url}
+                      className="rounded-circle" width="150px" height="150px" style={{align: 'right'}}/>
                   </div>
-                  <div className="fileinput-preview fileinput-exists img-no-padding"></div>
                   <div>
-                    <span className="btn btn-outline-default btn-file btn-round"><span className="fileinput-new">Change Photo</span><span className="fileinput-exists">Change</span><input type="file" name="..."/></span>
+                    <span className="btn btn-outline-default btn-file btn-round">
+                      <span>Change Photo</span>
+                      <input type="file" onChange={this.handleImageChange}/>
+                    </span>
                     <br></br>
-                      <a href="#paper-kit" className="btn btn-link btn-danger fileinput-exists" data-dismiss="fileinput"><i className="fa fa-times"></i> Remove</a>
                   </div>
                 </div>
               </div>

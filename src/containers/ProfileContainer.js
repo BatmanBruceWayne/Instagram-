@@ -17,7 +17,7 @@ class ProfileContainer extends React.Component{
   }
 
   getProfile(){
-    this.props.postProfileAction.getProfile;
+    this.props.postProfileAction.getProfile();
   }
 
   render(){
@@ -25,6 +25,7 @@ class ProfileContainer extends React.Component{
       <ProfileComponent
         getPhotoToProfile={this.getPhotoToProfile}
         getProfile={this.getProfile}
+        myProfile={this.props.myProfile}
         myPhoto={this.props.myPhoto}/>
     );
   }
@@ -32,7 +33,8 @@ class ProfileContainer extends React.Component{
 
 function mapStateToProps(state) {
   return{
-    myPhoto: state.getPhotoToProfileReducer.myPhoto
+    myPhoto: state.getPhotoToProfileReducer.myPhoto,
+    myProfile: state.getPhotoToProfileReducer.myProfile
   };
 }
 

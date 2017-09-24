@@ -35,7 +35,6 @@ export default class PostPhotoComponent extends React.Component {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', api, true);
     xhr.send(formData);
-
   }
 
   render() {
