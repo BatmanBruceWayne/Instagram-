@@ -1,9 +1,5 @@
 import {Redirect} from 'react-router'
-import {Switch, NavLink} from 'react-router-dom';
-import {Route} from 'react-router';
 import React from 'react';
-import ProfileContainer from "../containers/ProfileContainer";
-import ProfileSettingComponent from "./ProfileSettingComponent";
 
 export default class ProfileComponent extends React.Component {
   constructor(props, context) {
