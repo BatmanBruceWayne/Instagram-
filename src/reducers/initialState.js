@@ -12,8 +12,8 @@ export default {
       "deleted_at": null
     },
   ],
-  isAdding: false,
-  page_id: 0,
+  isAdding: true,
+  page_id: 2,
   token: "token state",
   loginState: {
     status: 0,

@@ -24,6 +24,7 @@ class ShowContainer extends React.Component {
     this.postComment = this.postComment.bind(this);
     console.log("CONTAINER_PROPS", this.props.actions.isAddComment);
 
+
   }
 
   getPost(value) {
@@ -57,10 +58,16 @@ class ShowContainer extends React.Component {
             <div className="container">
               <div className="motto">
                 <ShowHeader/>
-                <ShowReadMore
+                { this.props.isAdding ?
+                  <ShowReadMore
                   getPost={this.getPost}
                   loadPageId= {this.loadPageId}
+                  title = "Go with me ... "
+                  isAddComment = {this.isAddComment}
+                  add = "1"
                 />
+                : <div></div>
+                }
               </div>
             </div>
           </div>
@@ -112,10 +119,12 @@ class ShowContainer extends React.Component {
                           }
                         )
                         }
-                        <div className="col-md-2 offset-md-5" style={{margin : "00px"}}>
+                        <div className="col-md-12 offset-md-3" style={{margin : "00px", padding : '0px'}}>
                         <center><ShowReadMore
                           getPost={this.getPost}
                           loadPageId= {this.loadPageId}
+                          title = "See more girl ... "
+                          add = "2"
                         /></center>
                         </div>
                       </div>

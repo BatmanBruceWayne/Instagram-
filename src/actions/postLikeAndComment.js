@@ -6,7 +6,7 @@ export function postLike(post_id, user_id) {
     console.log('TEST POSTLIKE' , post_id );
     axios.post('http://api.trainingcolorme.tk/like/'+post_id +'/'+user_id+'?token='+localStorage.getItem("token"),)
       .then(function (response) {
-        console.log(response.status);
+        console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
