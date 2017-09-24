@@ -25,7 +25,7 @@ export function sendProfileOnAPI(value) {
 export function getProfile() {
   return function (dispatch) {
     let token = localStorage.getItem("token");
-    let user_id = localStorage.getItem("user_id");
+    let user_id = localStorage.getItem("userid");
     console.log("fuck", user_id);
 
     axios.get('http://api.trainingcolorme.tk/profile/' + user_id + '?token='+ token)

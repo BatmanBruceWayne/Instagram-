@@ -33,7 +33,7 @@ export default class ProfileSettingComponent extends React.Component {
   sendProfileOnAPI(e) {
     e.preventDefault();
     let token = localStorage.getItem("token");
-    let userid = localStorage.getItem("user_id");
+    let userid = localStorage.getItem("userid");
     console.log("batman" ,userid ,token);
     let api = 'http://api.trainingcolorme.tk/editprofile/' + userid + '?token=' + token;
     let formData = new FormData();

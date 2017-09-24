@@ -34,7 +34,7 @@ export default class ProfileComponent extends React.Component {
 
   increase(e){
     e.preventDefault();
-    console.log("wonder wonman");
+    console.log("wonder wonman", localStorage.getItem("userid"));
     this.setState({page_id: this.state.page_id + 1});
     this.props.getPhotoToProfile(this.state.page_id);
   }
