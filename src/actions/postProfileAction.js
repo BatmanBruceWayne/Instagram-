@@ -28,9 +28,10 @@ export function getProfile() {
     let user_id = localStorage.getItem("user_id");
     console.log("fuck");
 
-    axios.get('http://api.trainingcolorme.tk/profile' + user_id + '?token='+ token)
+    axios.get('http://api.trainingcolorme.tk/profile/' + user_id + '?token='+ token)
       .then(function (response) {
-        dispatch(editProfile(response.data.user));
+        console.log(response.data.data.user);
+        dispatch(editProfile(response.data.data.user));
 
       })
       .catch(function (error) {

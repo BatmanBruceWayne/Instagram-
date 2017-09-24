@@ -59,7 +59,7 @@ export default class ProfileComponent extends React.Component {
 
                 <div className="col-md-3 text-center">
                   <img
-                    src={this.props.myProfile.photo}
+                    src={this.props.myProfile.avt_url}
                     className="rounded-circle" width="150px" height="150px" style={{align: 'right'}}/>
 
                 </div>
