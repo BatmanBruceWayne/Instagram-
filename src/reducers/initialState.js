@@ -2,16 +2,10 @@ export default {
   listPost: [
   ],
   listComment: [
-    {
-      "id": 2,
-      "content": "ppppp",
-      "user_id": 5,
-      "post_id": 1,
-      "created_at": "2017-09-16 09:48:06",
-      "updated_at": "2017-09-16 09:48:06",
-      "deleted_at": null
-    },
   ],
+  listUser:[
+  ],
+  info : {},
   isAdding: true,
   page_id: 2,
   token: "token state",
