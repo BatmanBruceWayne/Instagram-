@@ -1,4 +1,5 @@
 import React from 'react';
+import ShowReadMore from "./ShowReadMore";
 
 class ShowHeader extends React.Component{
   constructor(props){
@@ -13,6 +14,16 @@ class ShowHeader extends React.Component{
         <h3 className="description">Start designing your landing page here.</h3>
         <br/>
         <br/><br/>
+        { this.props.isAdding ?
+          <ShowReadMore
+            getPost={this.props.getPost}
+            loadPageId= {this.props.loadPageId}
+            title = "Go with me ... "
+            isAddComment = {this.props.isAddComment}
+            add = "1"
+          />
+          : <div></div>
+        }
       </div>
     );
   }
