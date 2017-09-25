@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export function postLike(post_id, user_id) {
+export function postLike(post_id) {
 
   return function (dispatch) {
-    axios.post('http://api.trainingcolorme.tk/like/'+post_id +'/'+user_id+'?token='+localStorage.getItem("token"),)
+    axios.post('http://api.trainingcolorme.tk/like/'+post_id +'/'+localStorage.getItem("userid")+'?token='+localStorage.getItem("token"),)
       .then(function (response) {
         dispatch(loadLike(response));
       })
@@ -13,6 +13,7 @@ export function postLike(post_id, user_id) {
   };
 }
 export function loadLike(response) {
+  console.log("AAAAAAAAAAAAAAAAA", response.data.data.like_count);
   return({
     type : "LOAD_LIKE",
     like : response.data.data.like_count
@@ -25,6 +26,18 @@ export function postComment(post_id, value) {
       {
        comment_content : value.content
       })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+}
+export function postDelete(post_id) {
+  return function () {
+    axios.post('http://api.trainingcolorme.tk/deletepost/'+post_id +'/'+localStorage.getItem("userid") + '?token='+localStorage.getItem("token"),
+      )
       .then(function (response) {
         console.log(response);
       })

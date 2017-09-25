@@ -11,7 +11,14 @@ class ShowComment extends React.Component {
   render() {
     if (this.props.isAdding) {
       return (
-        <div >
+        <div>
+          <br/><hr width="500px" align="center" height="5px" color="black"/> <br/><br/>
+          <PostComment
+            id = {this.props.id}
+            postComment = {this.props.postComment}
+            getComment = {this.props.getComment}
+          />
+          <hr/>
           {this.props.listComment.map(
             (value) => {
               return (
@@ -26,11 +33,6 @@ class ShowComment extends React.Component {
                 </div>
               );
             })}
-          <PostComment
-            id = {this.props.id}
-            postComment = {this.props.postComment}
-            getComment = {this.props.getComment}
-          />
         </div>
       );
 

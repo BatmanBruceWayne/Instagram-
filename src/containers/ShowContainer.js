@@ -22,6 +22,8 @@ class ShowContainer extends React.Component {
     this.loadPageId = this.loadPageId.bind(this);
     this.postLike = this.postLike.bind(this);
     this.postComment = this.postComment.bind(this);
+    this.postDelete = this.postDelete.bind(this);
+
   }
 
 
@@ -42,12 +44,15 @@ class ShowContainer extends React.Component {
     this.props.getDataToShow.loadPageId();
   }
 
-  postLike(post_id, user_id) {
-    this.props.postLikeAndComment.postLike(post_id, user_id);
+  postLike(post_id) {
+    this.props.postLikeAndComment.postLike(post_id);
   }
 
   postComment(post_id, content) {
     this.props.postLikeAndComment.postComment(post_id, content);
+  }
+  postDelete (post_id){
+    this.props.postLikeAndComment.postDelete(post_id);
   }
 
 
@@ -75,17 +80,21 @@ class ShowContainer extends React.Component {
 
         </div>
         <div>
-          <div className="blog-2 section section-gray">
+          <div className="blog-2 section section-gray" >
             <div className="container ">
               <div className="row">
                 <div className="content-center">
-                  <div className="col-md-10 offset-md-2">
+                  <div className="col-md-14 offset-md-1">
                     <div className="row">
-                      <div className="col-md-10">
+                      <div className="col-md-14">
                         {this.props.listPost.map(
                           (value) => {
                             return (
                               <div className="card card-blog" style={{backgroundColor: "#FFFAF0"}}>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
                                 <ShowUserComponent
                                   user_id={value.user_id}
                                 />
@@ -101,7 +110,7 @@ class ShowContainer extends React.Component {
                                     getComment={this.getComment}
                                     postLike={this.postLike}
                                     post_id={value.id}
-                                    user_id={value.user_id}
+                                    postDelete = {this.postDelete}
                                   />
                                   <div className="col-md-10 offset-md-1">
                                     <ShowComment
@@ -114,7 +123,7 @@ class ShowContainer extends React.Component {
                                   </div>
                                 </div>
 
-                                <br/><br/>
+                                <br/><br/><br/>
                               </div>
                             );
                           }
