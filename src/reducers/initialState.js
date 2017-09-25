@@ -3,7 +3,7 @@ export default {
   ],
   listComment: [
   ],
-  info : {},
+
   isAdding: true,
   page_id: 2,
   token: "token state",

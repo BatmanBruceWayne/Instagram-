@@ -41,26 +41,6 @@ export function loadComment(response) {
   });
 }
 
-
-export function getInfoToShow(user_id) {
-  return function (dispatch) {
-    axios.get('http://api.trainingcolorme.tk/profile/'+user_id+'?token=')
-      .then(function (response) {
-        dispatch(loadInfo(response));
-      })
-      .catch(function (error) {
-        throw (error);
-      });
-  };
-}
-export function loadInfo(response) {
-  return({
-    type : "LOAD_INFO",
-    info : response.data.data.user
-  });
-}
-
-
 export function loadPageId(token) {
   return({
     type: "LOAD_PAGE_ID",

@@ -40,7 +40,7 @@ class LoginComponent extends React.Component {
           this.setState({error: response.data.data.message});
         else {
           localStorage.setItem("token", response.data.data.token);
-          localStorage.setItem("userid", response.data.data.userid);
+          localStorage.setItem("userid", response.data.data.user.id);
           this.setState({status: "/profile"});
         }
         this.props.login(response.data);

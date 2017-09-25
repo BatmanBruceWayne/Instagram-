@@ -1,9 +1,20 @@
 import React from 'react';
+import axios from 'axios';
 
 class PostComment extends React.Component{
   constructor (props) {
     super(props);
     this.state = {content : ''};
+    this.state = {info : {}};
+  }
+  componentDidMount() {
+    axios.get('http://api.trainingcolorme.tk/profile/'+this.props.user_id+'?token='+localStorage.getItem("token"))
+      .then( (response) => {
+        this.setState({info:response.data.data.user});
+      })
+      .catch(function (error) {
+        throw (error);
+      });
   }
   render(){
     return(

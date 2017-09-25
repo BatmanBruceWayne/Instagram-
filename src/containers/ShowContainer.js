@@ -18,15 +18,12 @@ class ShowContainer extends React.Component {
     super(props, context);
     this.getPost = this.getPost.bind(this);
     this.getComment =this.getComment.bind(this);
-    this.getInfo = this.getInfo.bind(this);
     this.isAddComment = this.isAddComment.bind(this);
     this.loadPageId = this.loadPageId.bind(this);
     this.postLike = this.postLike.bind(this);
     this.postComment = this.postComment.bind(this);
-    console.log("CONTAINER_PROPS", this.props.actions.isAddComment);
-
-
   }
+
 
   getPost(value) {
     this.props.getDataToShow.getPostToShow(value);
@@ -34,9 +31,7 @@ class ShowContainer extends React.Component {
   getComment(){
     this.props.getDataToShow.getCommentToShow();
   }
-  getInfo(user_id){
-    this.props.getDataToShow.getInfoToShow(user_id);
-  }
+
 
   isAddComment(){
     this.props.actions.isAddComment() ;
@@ -50,6 +45,9 @@ class ShowContainer extends React.Component {
   postComment(post_id, content){
     this.props.postLikeAndComment.postComment(post_id, content);
   }
+
+
+
 
   render() {
     return (
@@ -78,7 +76,7 @@ class ShowContainer extends React.Component {
             <div className="container ">
               <div className="row">
                 <div className="content-center">
-                  <div className="col-md-10 offset-md-2">
+                  <div className="col-md-12 offset-md-4">
                     <div className="row">
                       <div className="col-md-10">
                         {this.props.listPost.map(
@@ -86,10 +84,7 @@ class ShowContainer extends React.Component {
                             return (
                               <div className="card card-blog" style={{backgroundColor: "#FFFAF0"}}>
                                 <ShowUserComponent
-                                  user_name={value.user_name}
                                   user_id= {value.user_id}
-                                  info = {this.props.info}
-                                  getInfo = {this.getInfo}
                                 />
                                 <ShowImageAndTime
                                   description={value.description}
@@ -98,7 +93,7 @@ class ShowContainer extends React.Component {
                                 />
                                 < div className="card-block">
                                 <ShowIcon
-                                  like={value.like}
+                                  like={this.props.like}
                                   isAddComment = {this.isAddComment}
                                   getComment = {this.getComment}
                                   postLike = {this.postLike}
@@ -112,7 +107,6 @@ class ShowContainer extends React.Component {
                                   id = {value.id}
                                   postComment = {this.postComment}
                                     getComment = {this.getComment}
-                                  info = {this.props.info}
                                   />
                                   </div>
                                 </div>
@@ -151,7 +145,8 @@ function mapStateToProps(state) {
     listPost: state.showReducer.listPost,
     isAdding : state.showReducer.isAdding,
     listComment : state.showReducer.listComment,
-    info : state.showReducer.info
+    info : state.showReducer.info,
+    like : state.showReducer.like
   };
 }
 

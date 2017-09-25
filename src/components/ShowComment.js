@@ -17,13 +17,13 @@ class ShowComment extends React.Component {
           {this.props.listComment.map(
             (value) => {
               return (
-                <div onLoad =  {() => {this.props.getInfo(this.props.user_id);}} >
+                <div>
                   <ListComment
                     content={value.content}
                     post_id={value.post_id}
                     id={this.props.id}
                     updated_at = {value.updated_at}
-                    info = {this.props.info}
+                    user_id = {value.user_id}
                   />
                 </div>
               );
