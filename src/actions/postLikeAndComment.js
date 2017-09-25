@@ -13,10 +13,9 @@ export function postLike(post_id) {
   };
 }
 export function loadLike(response) {
-  console.log("AAAAAAAAAAAAAAAAA", response.data.data.like_count);
   return({
     type : "LOAD_LIKE",
-    like : response.data.data.like_count
+    likes : response.data.data.like_count
   });
 }
 

@@ -17,18 +17,15 @@ class ListComment extends React.Component {
           throw (error);
         });
       return (
-        <div>
+        <div marginHeight="0px">
           <div className="media">
-            <a className="pull-left" href="#paper-kit">
+            <a className="pull-left">
               <div className="avatar">
                 <img className="media-object" src={this.state.info.avt_url} alt="..." />
               </div>
             </a>
             <div className="media-body">
-              <h6 className="media-heading card-category text-success" style={{color : "red"}}>{this.state.info.name}</h6>
-              <div className="pull-right">
-                <h6 className="card-category text-danger">{this.props.updated_at}</h6>
-              </div>
+              <h6 className="media-body card-category text-danger" style={{color : "red"}}>[{this.state.info.name}]<small className="card-category text-success">  #{this.state.info.email} | {this.props.updated_at}</small></h6>
               <p>{this.props.content}</p>
             </div>
           </div>

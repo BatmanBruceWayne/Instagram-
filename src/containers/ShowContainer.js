@@ -20,7 +20,6 @@ class ShowContainer extends React.Component {
     this.getComment = this.getComment.bind(this);
     this.isAddComment = this.isAddComment.bind(this);
     this.isAddHeader = this.isAddHeader.bind(this);
-    this.loadPageId = this.loadPageId.bind(this);
     this.postLike = this.postLike.bind(this);
     this.postComment = this.postComment.bind(this);
     this.postDelete = this.postDelete.bind(this);
@@ -36,9 +35,6 @@ class ShowContainer extends React.Component {
     this.props.getDataToShow.getCommentToShow();
   }
 
-  loadPageId() {
-    this.props.getDataToShow.loadPageId();
-  }
 
   postLike(post_id) {
     this.props.postLikeAndComment.postLike(post_id);
@@ -94,7 +90,8 @@ class ShowContainer extends React.Component {
                                 />
                                 < div className="card-block">
                                   <ShowIcon
-                                    like={this.props.like}
+                                    likes={this.props.likes}
+                                    like ={value.like}
                                     isAddComment={this.isAddComment}
                                     getComment={this.getComment}
                                     postLike={this.postLike}
@@ -150,7 +147,7 @@ function mapStateToProps(state) {
     addHeader : state.showReducer.addHeader,
     listComment: state.showReducer.listComment,
     info: state.showReducer.info,
-    like: state.showReducer.like
+    likes: state.showReducer.likes
   };
 }
 

@@ -15,7 +15,7 @@ export default function showReducer(state = initialState, action) {
 
     case 'LOAD_LIKE' :
       return {
-        ...state, like : action.like
+        ...state, likes : action.likes
       };
     case 'IS_ADD_COMMENT':
       return{

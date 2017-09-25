@@ -39,9 +39,3 @@ export function loadComment(response) {
   });
 }
 
-export function loadPageId(token) {
-  return({
-    type: "LOAD_PAGE_ID",
-    token : token
-  });
-}
