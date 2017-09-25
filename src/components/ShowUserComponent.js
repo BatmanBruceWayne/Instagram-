@@ -11,7 +11,6 @@ class ShowUserComponent extends React.Component {
     axios.get('http://api.trainingcolorme.tk/profile/'+this.props.user_id+'?token='+localStorage.getItem("token"))
       .then( (response) => {
         this.setState({info:response.data.data.user});
-        console.log("AXIOS POST",this.state.info);
       })
       .catch(function (error) {
         throw (error);
@@ -22,8 +21,6 @@ class ShowUserComponent extends React.Component {
     return (
       <div  >
         <div >
-          {    console.log("INFORMATION",this.state.info , this.props.user_id)
-          }
           <div className="card-image">
             <h4 className="card-title">
               <NavLink to="/profile" id="author" style={{"font-size": "15px"}} >

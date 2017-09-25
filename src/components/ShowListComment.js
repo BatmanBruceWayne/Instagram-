@@ -5,8 +5,6 @@ class ListComment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {info : {}};
-  }
-  componentDidMount() {
     axios.get('http://api.trainingcolorme.tk/profile/'+this.props.user_id+'?token='+localStorage.getItem("token"))
       .then( (response) => {
         this.setState({info:response.data.data.user});
@@ -15,8 +13,8 @@ class ListComment extends React.Component {
         throw (error);
       });
   }
+
   render() {
-    console.log(" INFO COMMENT",this.state.info);
     if (this.props.post_id === this.props.id) {
       return (
         <div>

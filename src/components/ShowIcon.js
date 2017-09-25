@@ -3,7 +3,6 @@ import React from 'react';
 class ShowIcon extends React.Component {
   constructor(props) {
     super(props);
-    console.log("COMPONENT_ICON", this.props.isAddComment, "POST_ID" , this.props.post_id , "    " , this.props.getComment());
   }
 
   render() {
