@@ -19,6 +19,7 @@ class ShowContainer extends React.Component {
     this.getPost = this.getPost.bind(this);
     this.getComment = this.getComment.bind(this);
     this.isAddComment = this.isAddComment.bind(this);
+    this.isAddHeader = this.isAddHeader.bind(this);
     this.loadPageId = this.loadPageId.bind(this);
     this.postLike = this.postLike.bind(this);
     this.postComment = this.postComment.bind(this);
@@ -35,11 +36,6 @@ class ShowContainer extends React.Component {
     this.props.getDataToShow.getCommentToShow();
   }
 
-
-  isAddComment() {
-    this.props.actions.isAddComment();
-  }
-
   loadPageId() {
     this.props.getDataToShow.loadPageId();
   }
@@ -54,46 +50,39 @@ class ShowContainer extends React.Component {
   postDelete (post_id){
     this.props.postLikeAndComment.postDelete(post_id);
   }
+  isAddComment() {
+    this.props.actions.isAddComment();
+  }
+  isAddHeader(){
+    this.props.actions.isAddHeader();
+  }
 
 
   render() {
     return (
       <div>
-        <br/>
-        <br/>
-        <br/>
-        <div className="page-header" data-parallax="true"
-             style={{"background-image": "url(../Girl.jpg)", transform: "translate3d(2px, 3px, 04x);"}}>
-          <div className="filter"></div>
-          <div className="content-center">
-            <div className="container">
-              <div className="motto">
-                <ShowHeader
-                  isAdding={this.props.isAdding}
-                  getPost={this.getPost}
-                  loadPageId={this.loadPageId}
-                  isAddComment={this.isAddComment}
-                />
-              </div>
-            </div>
-          </div>
-
-        </div>
+        {this.props.addHeader ?
+          <ShowHeader
+            getPost={this.getPost}
+            loadPageId={this.loadPageId}
+            isAddHeader={this.isAddHeader}
+            addHeader={this.props.addHeader}
+          />
+          :
+          <div></div>
+        }
         <div>
           <div className="blog-2 section section-gray" >
             <div className="container ">
               <div className="row">
                 <div className="content-center">
-                  <div className="col-md-14 offset-md-1">
+                  <div className="col-md-10 offset-md-2">
                     <div className="row">
-                      <div className="col-md-14">
+                      <div className="col-md-10">
                         {this.props.listPost.map(
                           (value) => {
                             return (
                               <div className="card card-blog" style={{backgroundColor: "#FFFAF0"}}>
-                                <br/>
-                                <br/>
-                                <br/>
                                 <br/>
                                 <ShowUserComponent
                                   user_id={value.user_id}
@@ -122,13 +111,13 @@ class ShowContainer extends React.Component {
                                     />
                                   </div>
                                 </div>
-
                                 <br/><br/><br/>
                               </div>
                             );
                           }
                         )
                         }
+                        { !this.props.addHeader ?
                         <div className="col-md-12 offset-md-3" style={{margin: "00px", padding: '0px'}}>
                           <center><ShowReadMore
                             getPost={this.getPost}
@@ -137,6 +126,7 @@ class ShowContainer extends React.Component {
                             add="2"
                           /></center>
                         </div>
+                          : <div></div>}
                       </div>
                     </div>
                   </div>
@@ -157,6 +147,7 @@ function mapStateToProps(state) {
   return {
     listPost: state.showReducer.listPost,
     isAdding: state.showReducer.isAdding,
+    addHeader : state.showReducer.addHeader,
     listComment: state.showReducer.listComment,
     info: state.showReducer.info,
     like: state.showReducer.like

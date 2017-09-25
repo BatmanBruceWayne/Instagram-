@@ -3,9 +3,8 @@ export default {
   ],
   listComment: [
   ],
-
-  isAdding: true,
-  page_id: 2,
+  addHeader : true,
+  isAdding: false,
   token: "token state",
   loginState: {
     status: 0,

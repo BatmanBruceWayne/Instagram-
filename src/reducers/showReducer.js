@@ -21,9 +21,9 @@ export default function showReducer(state = initialState, action) {
       return{
         ...state,isAdding : !state.isAdding
       };
-    case 'LOAD_PAGE_ID' :
+    case 'IS_ADD_HEADER' :
       return{
-        ...state,page_id: state.page_id + 1
+        ...state,addHeader : !state.addHeader
       };
     default:
       return state ;
