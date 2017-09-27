@@ -3,9 +3,9 @@ export default {
   ],
   listComment: [
   ],
-  info : {},
-  isAdding: true,
-  page_id: 2,
+  addHeader : true,
+  isAdding: false,
+  likes : 0,
   token: "token state",
   loginState: {
     status: 0,
