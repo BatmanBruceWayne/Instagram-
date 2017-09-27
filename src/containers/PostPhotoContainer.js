@@ -1,16 +1,35 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import PostPhotoComponent from '../components/PostPhotoComponent';
+import * as postPhotoAction from '../actions/postPhotoAction';
 
-export default class PostPhotoContainer extends React.Component{
-  constructor(props,context){
+class PostPhotoContainer extends React.Component {
+  constructor(props, context) {
     super(props, context);
+    this.sendPhotoOnAPI = this.sendPhotoOnAPI.bind(this);
   }
 
-  render(){
-    return(
-      <div>
-        <PostPhotoComponent/>
-      </div>
+  sendPhotoOnAPI(value) {
+    this.props.postPhotoAction.sendPhotoOnAPI(value);
+  }
+
+  render() {
+    return (
+      <PostPhotoComponent
+        sendPhotoOnAPI={this.sendPhotoOnAPI}/>
     );
   }
 }
+
+function mapStateToProps() {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    postPhotoAction: bindActionCreators(postPhotoAction, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostPhotoContainer);

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Route} from 'react-router';
@@ -79,9 +78,7 @@ class App extends React.Component {
             </div>
           </nav>
         </div>
-
         <Switch>
-
           <Route exact path="/" component={LoginContainer}/>
           <Route path="/login" component={LoginContainer}/>
           <Route path="/profile" component={ProfileContainer}/>
@@ -89,7 +86,6 @@ class App extends React.Component {
           <Route path="/newsfeed" component={ShowContainer}/>
           <Route path="/post_photo" component={PostPhotoContainer}/>
         </Switch>
-
       </div>
     );
   }

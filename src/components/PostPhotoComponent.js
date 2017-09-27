@@ -1,12 +1,16 @@
 import React from 'react';
+import SweetAlert from 'react-bootstrap-sweetalert';
+import {Redirect} from 'react-router';
 
 export default class PostPhotoComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      photo_file:'',
+      photo_file: '',
       photo_url: '',
       description: '',
+      alert:null,
+      direct:"/post_photo"
     };
     this.handleImageChange = this.handleImageChange.bind(this);
     this.sendPhotoOnAPINoLoad = this.sendPhotoOnAPINoLoad.bind(this);
@@ -25,16 +29,32 @@ export default class PostPhotoComponent extends React.Component {
     reader.readAsDataURL(file);
   }
 
-  sendPhotoOnAPINoLoad(e){
-    e.preventDefault();
-    let token = localStorage.getItem("token");
-    let api = 'http://api.trainingcolorme.tk/upload' + '?token=' + token;
-    let formData = new FormData();
-    formData.append('photo', this.state.photo_file);
-    formData.append('description', this.state.description);
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', api, true);
-    xhr.send(formData);
+  sendPhotoOnAPINoLoad(e) {
+    this.props.sendPhotoOnAPI(this.state);
+  }
+
+  congratulation() {
+    const getAlert = () => (
+      <SweetAlert
+        success
+        title="Changes saved !"
+        onConfirm={() => this.hideAlert()}
+      >
+        Press "OK" to back your profile !
+      </SweetAlert>
+    );
+
+    this.setState({
+      alert: getAlert()
+    });
+    this.sendPhotoOnAPINoLoad();
+  }
+
+  hideAlert() {
+    this.setState({
+      alert: null,
+      direct:"/profile"
+    });
   }
 
   render() {
@@ -82,9 +102,12 @@ export default class PostPhotoComponent extends React.Component {
                   </div>
                   <div className="row buttons-row">
                     <div className="col-md-4">
-                      <button className="btn btn-primary btn-block btn-round" onClick={this.sendPhotoOnAPINoLoad}>Save &
+                      <a className="btn btn-primary btn-block btn-round" onClick={()=>this.congratulation()}>Save &
                         Publish
-                      </button>
+                        <Redirect to={this.state.direct}/>
+
+                      </a>
+                      {this.state.alert}
                     </div>
                   </div>
                 </form>

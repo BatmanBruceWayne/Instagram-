@@ -1,4 +1,4 @@
-import {Redirect} from 'react-router'
+import {Redirect} from 'react-router';
 import React from 'react';
 
 export default class ProfileComponent extends React.Component {
@@ -9,7 +9,6 @@ export default class ProfileComponent extends React.Component {
       direct: "/profile",
       page_id: 1
     };
-    this.getProfile = this.getProfile.bind(this);
     this.increase = this.increase.bind(this);
     this.directToLogin = this.directToLogin.bind(this);
     this.directToSetting = this.directToSetting.bind(this);
@@ -27,26 +26,22 @@ export default class ProfileComponent extends React.Component {
     this.setState({direct: "/post_photo"});
   }
 
-  getProfile(){
-    this.props.getProfile();
-    console.log("superman");
-  }
-
   increase(e){
     e.preventDefault();
-    console.log("wonder wonman", localStorage.getItem("userid"));
     this.setState({page_id: this.state.page_id + 1});
     this.props.getPhotoToProfile(this.state.page_id);
   }
 
+  componentWillMount(){
+    this.props.getProfile();
+  }
+
   render() {
     return (
-      <div onLoad={this.getProfile}>
-
+      <div>
         <div className="wrapper">
           <div className="page-header page-header-small"
                style={{"background-image": "url('http://t.wallpaperweb.org/wallpaper/nature/1920x1080/lakeside_v3_wallpaper_pack_by_mpk_1920x1080.jpg')"}}>
-
             <div className="filter"></div>
           </div>
           <div className="profile-content section-with-space section-gray">
@@ -63,13 +58,13 @@ export default class ProfileComponent extends React.Component {
                   <div className="row">
                     <div className="col-md-5 text-center">
                       <h3>{this.props.myProfile.name}</h3>
-
                     </div>
 
                     <button className="col-md-3 btn btn-success" onClick={this.directToSetting}>
                       Edit Profile
                       <Redirect to={this.state.direct}/>
                     </button>
+
                     <div className="col-md-1"></div>
                     <button className="col-md-3 btn btn-success" onClick={this.directToLogin}>
                       Logout

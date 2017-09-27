@@ -1,21 +1,25 @@
 import React from 'react';
+import SweetAlert from 'react-bootstrap-sweetalert';
+import {Redirect} from 'react-router';
 
-export default class ProfileSettingComponent extends React.Component {
+class ProfileSettingComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      name: '',
-      phonenumber: '',
-      story: '',
-      gender: '',
-      photo_url: this.props.myProfile.photo,
-      photo_file: ''
+      name: this.props.myProfile.name,
+      phonenumber: this.props.myProfile.phonenumber,
+      story: this.props.myProfile.story,
+      gender: this.props.myProfile.gender,
+      photo_url: this.props.myProfile.avt_url,
+      photo_file: '',
+      alert: null,
+      direct:"/profile-setting"
     };
+
     this.sendProfileOnAPI = this.sendProfileOnAPI.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.sendProfileOnAPI = this.sendProfileOnAPI.bind(this);
   }
-
 
   handleImageChange(e) {
     e.preventDefault();
@@ -30,22 +34,32 @@ export default class ProfileSettingComponent extends React.Component {
     reader.readAsDataURL(file);
   }
 
-  sendProfileOnAPI(e) {
-    e.preventDefault();
-    let token = localStorage.getItem("token");
-    let userid = localStorage.getItem("userid");
-    console.log("batman" ,userid ,token);
-    let api = 'http://api.trainingcolorme.tk/editprofile/' + userid + '?token=' + token;
-    let formData = new FormData();
-    formData.append('name', this.state.name);
-    formData.append('phonenumber', this.state.phonenumber);
-    formData.append('story', this.state.story);
-    formData.append('gender', this.state.gender);
-    formData.append('photo', this.state.photo_file);
+  sendProfileOnAPI() {
+    this.props.sendProfileOnAPI(this.state);
+  }
 
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', api);
-    xhr.send(formData);
+  congratulation() {
+    const getAlert = () => (
+      <SweetAlert
+        success
+        title="Changes saved !"
+        onConfirm={() => this.hideAlert()}
+      >
+        Press "OK" to back your profile !
+      </SweetAlert>
+    );
+
+    this.setState({
+      alert: getAlert()
+    });
+    this.sendProfileOnAPI();
+  }
+
+  hideAlert() {
+    this.setState({
+      alert: null,
+      direct:"/profile"
+    });
   }
 
   render() {
@@ -85,7 +99,7 @@ export default class ProfileSettingComponent extends React.Component {
                     <div className="col-md-6 col-sm-6">
                       <div className="form-group">
                         <label>Name</label>
-                        <input type="text" className="form-control border-input" placeholder="Name"
+                        <input type="text" className="form-control border-input" placeholder={this.state.name}
                                onChange={(e) => this.setState({name: e.target.value})}/>
                       </div>
                     </div>
@@ -93,30 +107,34 @@ export default class ProfileSettingComponent extends React.Component {
                     <div className="col-md-6 col-sm-6">
                       <div className="form-group">
                         <label>Gender</label>
-                        <input type="text" className="form-control border-input" placeholder="Gender"
+                        <input type="text" className="form-control border-input" placeholder={this.state.gender}
                                onChange={(e) => this.setState({gender: e.target.value})}/>
                       </div>
                     </div>
                   </div>
                   <div className="form-group">
                     <label>Phone</label>
-                    <input type="text" className="form-control border-input" placeholder="Phone"
+                    <input type="text" className="form-control border-input" placeholder={this.state.phonenumber}
                            onChange={(e) => this.setState({phonenumber: e.target.value})}/>
                   </div>
                   <div className="form-group">
                     <label>Story</label>
                     <textarea className="form-control textarea-limited"
-                              placeholder="This is a textarea limited to 150 characters." rows="3" maxlength="150"
+                              placeholder={this.state.story} rows="3" maxlength="150"
                               onChange={(e) => this.setState({story: e.target.value})}/>
                   </div>
 
                   <div className="text-center">
-                    <button type="submit" className="btn btn-wd btn-info btn-round" onClick={this.sendProfileOnAPI}>
-                      Save
-                    </button>
+                    <a
+                      onClick={() => this.congratulation()}
+                      className='btn btn-success btn-round'
+                    >
+                      <i className="fa fa-save" aria-hidden="true"></i> Save Change
+                      <Redirect to={this.state.direct}/>
+                    </a>
+                    {this.state.alert}
                   </div>
                 </form>
-
               </div>
             </div>
           </div>
@@ -125,3 +143,5 @@ export default class ProfileSettingComponent extends React.Component {
     );
   }
 }
+
+export default ProfileSettingComponent;

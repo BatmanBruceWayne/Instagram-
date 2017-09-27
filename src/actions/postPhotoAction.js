@@ -1,16 +1,12 @@
-import axios from 'axios';
 export function sendPhotoOnAPI(value) {
   return function () {
-    axios.post('http://api.trainingcolorme.tk/upload',
-      {
-        photo:value.photo,
-        description: value.description
-      })
-      .then(function (response) {
-        console.log(response.status);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    let token = localStorage.getItem("token");
+    let api = 'http://api.trainingcolorme.tk/upload' + '?token=' + token;
+    let formData = new FormData();
+    formData.append('photo', value.photo_file);
+    formData.append('description', value.description);
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', api, true);
+    xhr.send(formData);
   };
 }

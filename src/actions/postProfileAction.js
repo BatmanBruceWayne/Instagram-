@@ -1,24 +1,19 @@
 import axios from 'axios';
+
 export function sendProfileOnAPI(value) {
   return function () {
-    let user_id = localStorage.getItem("user_id");
     let token = localStorage.getItem("token");
-    let api = "http://api.trainingcolorme.tk/editprofile/" + user_id + '?token=' + token;
-
-    axios.post(api,
-      {
-        name: value.name,
-        phonenumber :value.phonenumber,
-        story:value.story,
-        gender: value.gender
-      })
-      .then(function (response) {
-        console.log(response);
-
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    let userid = localStorage.getItem("userid");
+    let api = 'http://api.trainingcolorme.tk/editprofile/' + userid + '?token=' + token;
+    let formData = new FormData();
+    formData.append('name', value.name);
+    formData.append('phonenumber', value.phonenumber);
+    formData.append('story', value.story);
+    formData.append('gender', value.gender);
+    formData.append('photo', value.photo_file);
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', api);
+    xhr.send(formData);
   };
 }
 
@@ -28,7 +23,7 @@ export function getProfile() {
     let user_id = localStorage.getItem("userid");
     console.log("fuck", user_id);
 
-    axios.get('http://api.trainingcolorme.tk/profile/' + user_id + '?token='+ token)
+    axios.get('http://api.trainingcolorme.tk/profile/' + user_id + '?token=' + token)
       .then(function (response) {
         console.log(response.data.data.user);
         dispatch(editProfile(response.data.data.user));
@@ -40,9 +35,9 @@ export function getProfile() {
   };
 }
 
-export function editProfile(value){
-  return({
-    type:'EDIT_PROFILE',
+export function editProfile(value) {
+  return ({
+    type: 'EDIT_PROFILE',
     value: value
   });
 }
