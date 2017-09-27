@@ -4,14 +4,15 @@ import {Route} from 'react-router';
 import {Switch, NavLink} from 'react-router-dom';
 import ShowContainer from '../containers/ShowContainer';
 import ProfileContainer from "../containers/ProfileContainer";
-
-
 import {LoginContainer} from "../containers/LoginContainer";
 import PostPhotoContainer from "../containers/PostPhotoContainer";
 import ProfileSettingContainer from "../containers/ProfileSettingContainer";
+import  initialState from '../reducers/initialState'
+import RegisterComponent from "./RegisterComponent";
 
 class App extends React.Component {
   render() {
+
     return (
       <div>
         <div>
@@ -62,12 +63,14 @@ class App extends React.Component {
                   </li>
 
                   <li className="nav-item dropdown">
-                    <div className="nav-link navbar-brand" width="30" height="30"
+                    <div className="nav-link navbar-brand" width="30px" height="30px"
                          aria-expanded="false">
                       <div className="profile-photo-small">
                         <NavLink to="/profile">
-                          <img src="http://d2xbg5ewmrmfml.cloudfront.net/assets/img/faces/erik-lucatero-2.jpg"
-                               alt="Circle Image" className="img-circle img-responsive img-no-padding"/>
+                          <img src={initialState.user.myProfile.avt_url}
+                               alt="Circle Image" className="img-circle img-responsive img-no-padding"
+                               width="40px" height="40px"
+                          />
                         </NavLink>
                       </div>
                     </div>
@@ -81,6 +84,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={LoginContainer}/>
           <Route path="/login" component={LoginContainer}/>
+          <Route path="/register" component={RegisterComponent}/>
           <Route path="/profile" component={ProfileContainer}/>
           <Route path="/profile-setting" component={ProfileSettingContainer}/>
           <Route path="/newsfeed" component={ShowContainer}/>

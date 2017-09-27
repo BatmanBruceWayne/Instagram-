@@ -17,6 +17,7 @@ class LoginComponent extends React.Component {
       status : "/login"
     }
     this.login.bind(this);
+  //////////////check token
     axios.get('http://api.trainingcolorme.tk/profile/'+
       localStorage.getItem("userid")+
       '?token='+
@@ -30,8 +31,13 @@ class LoginComponent extends React.Component {
     });
   }
 
+  redirectToRegister(){
+    console.log("direct to register",this.state);
+    this.setState({status : "/register"});
+  }
+
+
   login(e) {
-    console.log("LoginComponent -> login(data)", this.state);
     e.preventDefault();
     axios.post('http://api.trainingcolorme.tk/login-user',this.state)
       .then((response) => {
@@ -80,7 +86,7 @@ class LoginComponent extends React.Component {
                       <span>or</span>
                       <div className="line r"></div>
                     </div>
-                    <form className="register-form">
+                    <div className="register-form">
                       <input type="text" className="form-control" placeholder="Email"
                              onChange={(e) => this.setState({email : e.target.value})} value={this.state.email}/>
 
@@ -89,9 +95,16 @@ class LoginComponent extends React.Component {
 
                       <p style={{color : "red"}}>{this.state.error}</p>
                       <Redirect to={this.state.status}/>
-                      <p style={{color : "red"}}>{initialState.loginState.error}</p>
                       <button className="btn btn-block btn-round" onClick={(e) => {this.login(e)}}>Login </button>
-                    </form>
+                    </div>
+
+                    <div className="login">
+                      <p >Don't have an account?
+
+                          <a onClick={()=>{this.redirectToRegister()}} href="#">Register</a>
+
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

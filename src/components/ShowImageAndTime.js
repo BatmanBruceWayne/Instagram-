@@ -10,14 +10,12 @@ class ShowImageAndTime extends React.Component {
       <div>
 
         <div>
-          {/*UPDATE TIME*/}
-          {/*IMAGE      */}
           <center>
             <a href={this.props.img_url} >
               <img src={this.props.img_url} />
             </a></center>
           <br/>
-          <div className="col-md-4 offset-md-8" >
+          <div className="col-md-6 offset-md-7" >
             <h6 className="card-category text-success"><i className="fa fa-clock-o"/>
               Update at : {this.props.updated_at}</h6>
           </div>

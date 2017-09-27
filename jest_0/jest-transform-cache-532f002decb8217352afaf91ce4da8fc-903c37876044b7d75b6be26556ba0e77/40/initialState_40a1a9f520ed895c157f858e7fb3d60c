@@ -1,0 +1,28 @@
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = {
+  listPost: [],
+
+  listComment: [],
+
+  listUser: [],
+
+  isAdding: true,
+  page_id: 2,
+  token: "token state",
+  loginState: {
+    status: 0,
+    error: "This is error you son of bitches.",
+    token: "" },
+
+
+  user: {
+    myPhoto: [],
+    myProfile: {
+      "id": "29",
+      "name": "Bruce Wayne",
+      "email": "tientai.nguyen.1501@gmail.com",
+      "created_at": "",
+      "updated_at": "",
+      "phonenumber": "0941439925",
+      "story": "Yêu màu hường và ghét sự giả dối",
+      "gender": "Male",
+      "photo": "http://www.planwallpaper.com/static/images/maxresdefault_pzfcoB9.jpg" } } };

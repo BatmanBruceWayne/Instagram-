@@ -12,18 +12,18 @@ export default function showReducer(state = initialState, action) {
       return{
         ...state,listComment : [... action.listComment ],
       };
-    case 'LOAD_INFO': {
+
+    case 'LOAD_LIKE' :
       return {
-        ...state, info: [...action.info]
+        ...state, likes : action.likes
       };
-    }
     case 'IS_ADD_COMMENT':
       return{
         ...state,isAdding : !state.isAdding
       };
-    case 'LOAD_PAGE_ID' :
+    case 'IS_ADD_HEADER' :
       return{
-        ...state,page_id: state.page_id + 1
+        ...state,addHeader : !state.addHeader
       };
     default:
       return state ;
