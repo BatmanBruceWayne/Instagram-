@@ -2,6 +2,7 @@
 import React from 'react';
 import NavbarComponent from './NavbarComponent';
 import axios from 'axios';
+import {Redirect} from 'react-router'
 class RegisterComponent extends React.Component {
 
   constructor(){
@@ -9,12 +10,17 @@ class RegisterComponent extends React.Component {
     this.state = {
         name : 'Nang',
         email : 'demo',
-        password : '123'
+        password : '123',
+        status: '/register',
+        error:''
     };
     this.register = this.register.bind(this);
 
   }
-
+  redirectToLogin(){
+    console.log("direct to login",this.state);
+    this.setState({status : "/login"});
+  }
   register(){
     console.log("register, State: ",this.state);
 
@@ -22,7 +28,13 @@ class RegisterComponent extends React.Component {
       this.state)
       .then((response) => {
         console.log('respone', response);
-        localStorage.setItem("token", )
+        if(response.data.status){
+          localStorage.setItem("token", response.data.data.token);
+          localStorage.setItem("userid", response.data.data.user.id);
+          this.setState({status : '/profile'});
+        }else {
+          this.setState({error:response.data.data.message});
+        }
       }).catch(function (error) {
         console.log(error);
     });
@@ -68,9 +80,12 @@ class RegisterComponent extends React.Component {
                       />
 
                       <button className="btn btn-block btn-round" onClick={this.register}>Register</button>
+                      <p style={{color : "red"}}>{this.state.error}</p>
                     </div>
                     <div className="login">
-                      <p>Already have an account? <a href="#0">Log in</a>.</p>
+                      <p >Already have an account?
+                          <a onClick={()=>{this.redirectToLogin()}} href="#">Login</a><Redirect to={this.state.status}/>
+                      </p>
                     </div>
                   </div>
                 </div>

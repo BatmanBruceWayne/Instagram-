@@ -9,7 +9,7 @@ export default {
   token: "token state",
   loginState: {
     status: 0,
-    error: "This is error you son of bitches.",
+    error: "",
     token: ""
   },
 
