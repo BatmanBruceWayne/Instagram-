@@ -10,7 +10,7 @@ class ProfileSettingComponent extends React.Component {
       phonenumber: this.props.myProfile.phonenumber,
       story: this.props.myProfile.story,
       gender: this.props.myProfile.gender,
-      photo_url: this.props.myProfile.avt_url,
+      photo_url:'',
       photo_file: '',
       alert: null,
       direct:"/profile-setting"
@@ -64,7 +64,7 @@ class ProfileSettingComponent extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div className="wrapper" onLoad={this.props.getProfile()}>
         <div className="page-header page-header-xs settings-background" style={{
           "background-image": "url('https://static.topcv.vn/company_logos/color-me-57e118423cae2.jpg')",
           width: '100%',
@@ -79,7 +79,7 @@ class ProfileSettingComponent extends React.Component {
                 <div>
                   <div className="img-no-padding">
                     <img
-                      src={this.state.photo_url}
+                      src={this.state.photo_url} alt="Choose your avatar..."
                       className="rounded-circle" width="150px" height="150px" style={{align: 'right'}}/>
                   </div>
                   <div>
@@ -99,7 +99,7 @@ class ProfileSettingComponent extends React.Component {
                     <div className="col-md-6 col-sm-6">
                       <div className="form-group">
                         <label>Name</label>
-                        <input type="text" className="form-control border-input" placeholder={this.state.name}
+                        <input type="text" className="form-control border-input" placeholder={this.props.myProfile.name}
                                onChange={(e) => this.setState({name: e.target.value})}/>
                       </div>
                     </div>
@@ -107,20 +107,20 @@ class ProfileSettingComponent extends React.Component {
                     <div className="col-md-6 col-sm-6">
                       <div className="form-group">
                         <label>Gender</label>
-                        <input type="text" className="form-control border-input" placeholder={this.state.gender}
+                        <input type="text" className="form-control border-input" placeholder={this.props.myProfile.gender}
                                onChange={(e) => this.setState({gender: e.target.value})}/>
                       </div>
                     </div>
                   </div>
                   <div className="form-group">
                     <label>Phone</label>
-                    <input type="text" className="form-control border-input" placeholder={this.state.phonenumber}
+                    <input type="text" className="form-control border-input" placeholder={this.props.myProfile.phonenumber}
                            onChange={(e) => this.setState({phonenumber: e.target.value})}/>
                   </div>
                   <div className="form-group">
                     <label>Story</label>
                     <textarea className="form-control textarea-limited"
-                              placeholder={this.state.story} rows="3" maxlength="150"
+                              placeholder={this.props.myProfile.story} rows="3" maxlength="150"
                               onChange={(e) => this.setState({story: e.target.value})}/>
                   </div>
 

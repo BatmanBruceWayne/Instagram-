@@ -4,17 +4,15 @@ import {Route} from 'react-router';
 import {Switch, NavLink} from 'react-router-dom';
 import ShowContainer from '../containers/ShowContainer';
 import ProfileContainer from "../containers/ProfileContainer";
-import {LoginContainer} from "../containers/LoginContainer";
+import LoginContainer from "../containers/LoginContainer";
 import PostPhotoContainer from "../containers/PostPhotoContainer";
 import ProfileSettingContainer from "../containers/ProfileSettingContainer";
-import  initialState from '../reducers/initialState'
 import RegisterComponent from "./RegisterComponent";
 
 class App extends React.Component {
   render() {
-
     return (
-      <div>
+      <div onLoad={this.props.getProfile()}>
         <div>
           <nav className="navbar navbar-toggleable-md nav-down bg-success fixed-top navbar-default" color-on-scroll="200">
             <div className="container">
@@ -67,7 +65,7 @@ class App extends React.Component {
                          aria-expanded="false">
                       <div className="profile-photo-small">
                         <NavLink to="/profile">
-                          <img src={initialState.user.myProfile.avt_url}
+                          <img src={this.props.myProfile.avt_url}
                                alt="Circle Image" className="img-circle img-responsive img-no-padding"
                                width="40px" height="40px"
                           />

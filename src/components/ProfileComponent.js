@@ -32,13 +32,9 @@ export default class ProfileComponent extends React.Component {
     this.props.getPhotoToProfile(this.state.page_id);
   }
 
-  componentWillMount(){
-    this.props.getProfile();
-  }
-
   render() {
     return (
-      <div>
+      <div onLoad={this.props.getProfile()}>
         <div className="wrapper">
           <div className="page-header page-header-small"
                style={{"background-image": "url('http://t.wallpaperweb.org/wallpaper/nature/1920x1080/lakeside_v3_wallpaper_pack_by_mpk_1920x1080.jpg')"}}>

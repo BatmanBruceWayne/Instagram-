@@ -1,42 +1,47 @@
 import React from 'react';
 import LoginComponent from "../components/LoginComponent";
-import ProfileComponent from "../components/ProfileComponent";
-
 import * as LoginAciton from '../actions/LoginAction';
+import * as postProfileAction from '../actions/postProfileAction';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-
-
-
-export class LoginContainer extends React.Component{
-  constructor(){
-    super();
+export class LoginContainer extends React.Component {
+  constructor(props, context) {
+    super(props, context);
     this.login = this.login.bind(this);
+    this.getProfile = this.getProfile.bind(this);
   }
 
-  login(data){
+  login(data) {
     this.props.loginActions.login(data);
-
   }
 
-  render(){
-    return( <LoginComponent
-                  login = {this.login}
+  getProfile() {
+    this.props.postProfileAction.getProfile();
+  }
 
+  render() {
+    return ( <LoginComponent
+      login={this.login}
+      getProfile={this.getProfile}
+      myProfile={this.props.myProfile}
     />);
   }
 }
 
 function mapStateToProps(state) {
   return {
-    data : state.loginState
+    data: state.loginState,
+    myProfile: state.getPhotoToProfileReducer.myProfile
+
   };
 }
+
 function mapDispatchToProps(dispatch) {
   return {
-    loginActions: bindActionCreators(LoginAciton, dispatch)
+    loginActions: bindActionCreators(LoginAciton, dispatch),
+    postProfileAction: bindActionCreators(postProfileAction, dispatch)
   }
     ;
 }

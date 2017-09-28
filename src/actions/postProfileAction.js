@@ -21,13 +21,9 @@ export function getProfile() {
   return function (dispatch) {
     let token = localStorage.getItem("token");
     let user_id = localStorage.getItem("userid");
-    console.log("fuck", user_id);
-
     axios.get('http://api.trainingcolorme.tk/profile/' + user_id + '?token=' + token)
       .then(function (response) {
-        console.log(response.data.data.user);
         dispatch(editProfile(response.data.data.user));
-
       })
       .catch(function (error) {
         throw (error);
