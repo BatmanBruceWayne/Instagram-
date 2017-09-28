@@ -11,6 +11,7 @@ import RegisterComponent from "./RegisterComponent";
 
 class App extends React.Component {
   render() {
+
     return (
       <div onLoad={this.props.getProfile()}>
         <div>
