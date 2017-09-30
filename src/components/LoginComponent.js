@@ -47,7 +47,7 @@ class LoginComponent extends React.Component {
         else {
           localStorage.setItem("token", response.data.data.token);
           localStorage.setItem("userid", response.data.data.user.id);
-          this.setState({status: "/profile"});
+          this.setState({status: "/newsfeed"});
         }
         this.props.login(response.data);
       })

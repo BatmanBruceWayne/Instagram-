@@ -7,7 +7,8 @@ export function getPostToShow(value) {
     axios.get('http://api.trainingcolorme.tk/page?token='+localStorage.getItem("token")+'&page_id='+value )
   .then(function (response) {
         dispatch(loadPost(response));
-      })
+    dispatch(loading (response)) ;
+  })
       .catch(function (error) {
         throw (error);
       });

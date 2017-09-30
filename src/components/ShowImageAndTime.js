@@ -12,7 +12,7 @@ class ShowImageAndTime extends React.Component {
         <div>
           <center>
             <a href={this.props.img_url} >
-              <img src={this.props.img_url} />
+              <img src={this.props.img_url} alt = "No Img ... " />
             </a></center>
           <br/>
           <div className="col-md-6 offset-md-7" >

@@ -1,18 +1,18 @@
-export default {
-  listPost: [
-  ],
-  listComment: [
-  ],
-  addHeader : true,
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = {
+  listPost: [],
+
+  listComment: [],
+
+  addHeader: true,
   isAdding: false,
-  likes : 10,
-  loading : 0,
+  likes: 0,
+  loading: 0,
   token: "token state",
   loginState: {
     status: 0,
     error: "",
-    token: ""
-  },
+    token: "" },
+
 
   user: {
     myPhoto: [],
@@ -25,7 +25,4 @@ export default {
       phonenumber: "69",
       story: "Because I'm Batman",
       gender: "Male",
-      avt_url: "http://trainingcolorme.tk/uploads/images/150623063962059024cf96d2a3099f5c569aec6b41.jpg"
-    }
-  }
-};
+      avt_url: "http://trainingcolorme.tk/uploads/images/150623063962059024cf96d2a3099f5c569aec6b41.jpg" } } };

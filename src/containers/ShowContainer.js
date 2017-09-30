@@ -34,12 +34,9 @@ class ShowContainer extends React.Component {
   getComment() {
     this.props.getDataToShow.getCommentToShow();
   }
-
-
   postLike(post_id) {
     this.props.postLikeAndComment.postLike(post_id);
   }
-
   postComment(post_id, content) {
     this.props.postLikeAndComment.postComment(post_id, content);
   }
@@ -65,10 +62,14 @@ class ShowContainer extends React.Component {
             addHeader={this.props.addHeader}
           />
           :
-          <div></div>
+          <div>
+            <br/>
+            <br/>
+            <br/>
+          </div>
         }
         <div>
-          <div className="blog-2 section section-gray" >
+          <div className="" >
             <div className="container ">
               <div className="row">
                 <div className="content-center">
@@ -97,16 +98,20 @@ class ShowContainer extends React.Component {
                                     postLike={this.postLike}
                                     post_id={value.id}
                                     postDelete = {this.postDelete}
+                                    isAdding={this.props.isAdding}
+                                    listComment={this.props.listComment}
+                                    id={value.id}
+                                    postComment={this.postComment}
                                   />
-                                  <div className="col-md-10 offset-md-1">
-                                    <ShowComment
-                                      isAdding={this.props.isAdding}
-                                      listComment={this.props.listComment}
-                                      id={value.id}
-                                      postComment={this.postComment}
-                                      getComment={this.getComment}
-                                    />
-                                  </div>
+                                  {/*<div className="col-md-10 offset-md-1">*/}
+                                    {/*<ShowComment*/}
+                                      {/*isAdding={this.props.isAdding}*/}
+                                      {/*listComment={this.props.listComment}*/}
+                                      {/*id={value.id}*/}
+                                      {/*postComment={this.postComment}*/}
+                                      {/*getComment={this.getComment}*/}
+                                    {/*/>*/}
+                                  {/*</div>*/}
                                 </div>
                                 <br/><br/><br/>
                               </div>
@@ -114,25 +119,26 @@ class ShowContainer extends React.Component {
                           }
                         )
                         }
-                        { !this.props.addHeader ?
-                        <div className="col-md-12 offset-md-3" style={{margin: "00px", padding: '0px'}}>
-                          <center><ShowReadMore
-                            getPost={this.getPost}
-                            loadPageId={this.loadPageId}
-                            title="See more girl ... "
-                            add="2"
-                          /></center>
-                        </div>
-                          : <div></div>}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
+        { !this.props.addHeader ?
+          <div className="col-md-12 offset-md-3" style={{margin: "00px", padding: '0px'}}>
+            <center><ShowReadMore
+              getPost={this.getPost}
+              loadPageId={this.loadPageId}
+              title="See more girl ... "
+              add="2"
+              loading = {this.props.loading}
+            /></center>
+          </div>
+          : <div>
+          </div>}
       </div>
     );
 
@@ -147,7 +153,8 @@ function mapStateToProps(state) {
     addHeader : state.showReducer.addHeader,
     listComment: state.showReducer.listComment,
     info: state.showReducer.info,
-    likes: state.showReducer.likes
+    likes: state.showReducer.likes,
+    loading : state.showReducer.loading
   };
 }
 

@@ -12,7 +12,7 @@ class ShowComment extends React.Component {
     if (this.props.isAdding) {
       return (
         <div>
-          <br/><hr width="500px" align="center" height="5px" color="black"/> <br/><br/>
+          <br/><hr /> <br/><br/>
           <PostComment
             id = {this.props.id}
             postComment = {this.props.postComment}
