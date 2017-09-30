@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
-import App from './App';
+import AppContainer from '../containers/AppContainer';
 
 export default class Root extends Component {
   render() {
@@ -10,7 +10,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <App />
+          <AppContainer />
         </ConnectedRouter>
       </Provider>
     );
